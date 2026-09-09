@@ -26,7 +26,7 @@
     }
 
     html {
-      background: #080808;
+      background: #050505;
     }
 
     body {
@@ -42,10 +42,10 @@
 
       background:
         radial-gradient(
-          circle at 50% -10%,
-          #303030 0%,
-          #151515 35%,
-          #080808 75%
+          circle at 50% -15%,
+          #3a3a3a 0%,
+          #171717 32%,
+          #080808 72%
         );
 
       color: white;
@@ -68,17 +68,17 @@
 
       position: fixed;
 
-      width: 300px;
-      height: 300px;
+      width: 360px;
+      height: 360px;
 
-      top: -170px;
+      top: -190px;
       left: 50%;
 
       transform: translateX(-50%);
 
-      background: rgba(255,255,255,.055);
+      background: rgba(255,255,255,.07);
 
-      filter: blur(70px);
+      filter: blur(85px);
 
       pointer-events: none;
     }
@@ -96,60 +96,116 @@
       background:
         linear-gradient(
           145deg,
-          #252525 0%,
-          #151515 45%,
-          #0e0e0e 100%
+          #292929 0%,
+          #1b1b1b 28%,
+          #101010 62%,
+          #070707 100%
         );
 
-      border: 1px solid #3b3b3b;
+      border: 1px solid #4a4a4a;
 
-      border-radius: 30px;
+      border-radius: 32px;
 
       padding: 30px 22px 24px;
 
       text-align: center;
 
       box-shadow:
-        0 30px 90px rgba(0,0,0,.75);
+        0 35px 100px rgba(0,0,0,.82),
+        inset 0 1px 0 rgba(255,255,255,.07);
 
       overflow: hidden;
     }
 
+    .card::before {
+      content: "";
+
+      position: absolute;
+
+      top: -80px;
+      left: -100px;
+
+      width: 320px;
+      height: 180px;
+
+      background:
+        linear-gradient(
+          120deg,
+          transparent,
+          rgba(255,255,255,.055),
+          transparent
+        );
+
+      transform: rotate(-15deg);
+
+      pointer-events: none;
+    }
+
     .brand {
-      font-size: 10px;
+      position: relative;
+
+      font-size: 9px;
       letter-spacing: 5px;
-      color: #aaa;
-      margin-bottom: 12px;
+
+      color: #9a9a9a;
+
+      margin-bottom: 13px;
     }
 
     .title {
+      position: relative;
+
       font-family: Georgia, serif;
-      font-size: 34px;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
+
+      font-size: 36px;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 6px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #bdbdbd 45%,
+          #707070 100%
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
     }
 
     .subtitle {
-      color: #777;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
+      color: #707070;
+
+      font-size: 10px;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 28px;
     }
 
     .badge {
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
 
-      padding: 7px 12px;
+      padding: 7px 13px;
 
-      border: 1px solid #393939;
+      border: 1px solid #454545;
+
       border-radius: 50px;
 
-      color: #888;
+      color: #a3a3a3;
 
-      font-size: 9px;
-      letter-spacing: 2px;
+      background: rgba(255,255,255,.025);
+
+      font-size: 8px;
+
+      letter-spacing: 2.5px;
 
       margin-bottom: 18px;
     }
@@ -161,20 +217,24 @@
 
     button {
       width: 100%;
+
       min-height: 54px;
 
       padding: 15px;
 
       border: none;
+
       border-radius: 15px;
 
-      background: #f4f4f4;
+      background: #f2f2f2;
+
       color: #101010;
 
-      font-size: 12px;
+      font-size: 11px;
+
       font-weight: 700;
 
-      letter-spacing: 1.3px;
+      letter-spacing: 1.4px;
 
       cursor: pointer;
 
@@ -192,14 +252,18 @@
     }
 
     .secondary {
-      background: transparent;
+      background: rgba(255,255,255,.015);
+
       color: white;
-      border: 1px solid #414141;
+
+      border: 1px solid #454545;
     }
 
     .dark-button {
-      background: #191919;
-      color: #ddd;
+      background: #161616;
+
+      color: #d0d0d0;
+
       border: 1px solid #383838;
     }
 
@@ -212,7 +276,7 @@
 
       border: 1px solid #3d3d3d;
 
-      background: #0d0d0d;
+      background: #0b0b0b;
 
       color: white;
 
@@ -235,75 +299,197 @@
       display: none !important;
     }
 
+    /* =========================
+       CLUB CARD PREMIUM
+       ========================= */
+
     .member {
+      position: relative;
+
       margin-top: 20px;
 
-      border: 1px solid #414141;
+      border: 1px solid #555;
 
-      border-radius: 22px;
+      border-radius: 24px;
 
-      padding: 25px 19px;
+      padding: 23px 19px 20px;
 
       background:
         linear-gradient(
           145deg,
-          rgba(255,255,255,.045),
-          rgba(255,255,255,.012)
+          #2b2b2b 0%,
+          #1b1b1b 35%,
+          #101010 68%,
+          #080808 100%
         );
 
-      animation: appear .35s ease;
+      box-shadow:
+        0 20px 55px rgba(0,0,0,.65),
+        inset 0 1px 0 rgba(255,255,255,.075);
+
+      overflow: hidden;
+
+      animation: appear .4s ease;
     }
 
-    @keyframes appear {
+    .member::before {
+      content: "";
 
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
+      position: absolute;
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      width: 280px;
+      height: 110px;
 
+      top: -45px;
+      right: -110px;
+
+      background:
+        linear-gradient(
+          120deg,
+          transparent,
+          rgba(255,255,255,.08),
+          transparent
+        );
+
+      transform: rotate(-18deg);
+
+      pointer-events: none;
+    }
+
+    .member-top {
+      position: relative;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding-bottom: 17px;
+
+      border-bottom: 1px solid #333;
+
+      margin-bottom: 22px;
+    }
+
+    .member-brand {
+      font-size: 8px;
+
+      letter-spacing: 3px;
+
+      color: #8b8b8b;
+    }
+
+    .member-status {
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      font-size: 7px;
+
+      letter-spacing: 1.7px;
+
+      color: #aaa;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #d7d7d7;
+
+      box-shadow:
+        0 0 8px rgba(255,255,255,.55);
     }
 
     .member-label {
-      font-size: 9px;
+      font-size: 8px;
+
       letter-spacing: 3px;
-      color: #777;
+
+      color: #696969;
+
       margin-bottom: 8px;
     }
 
     .nombre {
       font-family: Georgia, serif;
-      font-size: 27px;
-      margin-bottom: 25px;
+
+      font-size: 28px;
+
+      line-height: 1.15;
+
+      margin-bottom: 24px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #a9a9a9
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .club-mark {
+      display: inline-block;
+
+      padding: 6px 10px;
+
+      border: 1px solid #3f3f3f;
+
+      border-radius: 7px;
+
+      color: #858585;
+
+      font-size: 7px;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 20px;
     }
 
     .visitas {
-      font-size: 50px;
-      font-weight: 600;
-      letter-spacing: -1px;
+      font-size: 49px;
+
+      font-weight: 500;
+
+      letter-spacing: -2px;
+
+      line-height: 1;
     }
 
     .visitas-label {
-      font-size: 9px;
+      font-size: 8px;
+
       letter-spacing: 3px;
-      color: #777;
-      margin-bottom: 20px;
+
+      color: #707070;
+
+      margin-top: 8px;
+
+      margin-bottom: 19px;
     }
 
     .barra {
       width: 100%;
-      height: 7px;
+
+      height: 6px;
 
       background: #303030;
 
       border-radius: 20px;
+
       overflow: hidden;
 
-      margin-bottom: 23px;
+      margin-bottom: 9px;
     }
 
     .progreso {
@@ -312,33 +498,57 @@
       background:
         linear-gradient(
           90deg,
-          #777,
-          #fff
+          #666666,
+          #eeeeee,
+          #888888
         );
 
       border-radius: 20px;
 
+      box-shadow:
+        0 0 8px rgba(255,255,255,.18);
+
       transition: width .7s ease;
+    }
+
+    .progress-meta {
+      display: flex;
+
+      justify-content: space-between;
+
+      font-size: 7px;
+
+      letter-spacing: 1.5px;
+
+      color: #646464;
+
+      margin-bottom: 21px;
     }
 
     .beneficio {
       border-top: 1px solid #333;
 
-      padding-top: 19px;
-      margin-top: 5px;
+      padding-top: 18px;
+
+      margin-top: 2px;
     }
 
     .beneficio-label {
-      font-size: 8px;
+      font-size: 7px;
+
       letter-spacing: 3px;
-      color: #777;
+
+      color: #6f6f6f;
+
       margin-bottom: 9px;
     }
 
     .beneficio-texto {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #ddd;
+      font-size: 13px;
+
+      line-height: 1.55;
+
+      color: #d0d0d0;
     }
 
     .unlocked {
@@ -346,15 +556,45 @@
 
       padding: 14px;
 
-      border: 1px solid #555;
+      border: 1px solid #5a5a5a;
 
       border-radius: 13px;
 
-      font-size: 11px;
+      font-size: 10px;
 
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
 
-      background: rgba(255,255,255,.025);
+      color: #e1e1e1;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.012)
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    @keyframes appear {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(10px)
+          scale(.985);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
     }
 
     .success {
@@ -402,9 +642,9 @@
     .footer {
       margin-top: 23px;
 
-      color: #5f5f5f;
+      color: #555;
 
-      font-size: 9px;
+      font-size: 8px;
 
       letter-spacing: 3px;
     }
@@ -423,13 +663,17 @@
 
     .install-title {
       font-size: 11px;
+
       letter-spacing: 2px;
+
       margin-bottom: 13px;
     }
 
     .install-text {
       color: #999;
+
       font-size: 12px;
+
       line-height: 1.6;
     }
 
@@ -440,6 +684,7 @@
       height: 28px;
 
       border: 2px solid #333;
+
       border-top-color: white;
 
       border-radius: 50%;
@@ -448,13 +693,16 @@
     }
 
     @keyframes spin {
+
       to {
         transform: rotate(360deg);
       }
+
     }
 
     #splash {
       position: fixed;
+
       inset: 0;
 
       z-index: 9999;
@@ -462,7 +710,7 @@
       background:
         radial-gradient(
           circle at center,
-          #262626 0%,
+          #292929 0%,
           #101010 45%,
           #050505 100%
         );
@@ -470,6 +718,7 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       text-align: center;
@@ -481,7 +730,9 @@
 
     #splash.hide {
       opacity: 0;
+
       visibility: hidden;
+
       pointer-events: none;
     }
 
@@ -493,6 +744,18 @@
       letter-spacing: 6px;
 
       margin-bottom: 12px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #858585
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
     }
 
     .splash-name {
@@ -524,6 +787,7 @@
 
   </div>
 
+
   <div class="app">
 
     <div class="card">
@@ -543,6 +807,7 @@
       <div class="badge">
         DIGITAL MEMBERSHIP
       </div>
+
 
       <div id="inicio">
 
@@ -567,6 +832,7 @@
         </div>
 
       </div>
+
 
       <div id="registro" class="hidden">
 
@@ -605,6 +871,7 @@
 
       </div>
 
+
       <div id="consulta" class="hidden">
 
         <input
@@ -635,6 +902,7 @@
         </div>
 
       </div>
+
 
       <div id="instalacion" class="hidden">
 
@@ -681,7 +949,9 @@
 
       </div>
 
+
       <div id="resultado"></div>
+
 
       <div class="footer">
         MEMBER OF THE CLUB
@@ -690,6 +960,7 @@
     </div>
 
   </div>
+
 
   <script>
 
@@ -702,8 +973,10 @@
     const APPS_SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
 
+
     const STORAGE_KEY =
       "tcs_card_whatsapp";
+
 
     function ocultarTodo() {
 
@@ -729,6 +1002,7 @@
 
     }
 
+
     function volverInicio() {
 
       ocultarTodo();
@@ -738,6 +1012,7 @@
         .classList.remove("hidden");
 
     }
+
 
     function mostrarRegistro() {
 
@@ -762,6 +1037,7 @@
 
     }
 
+
     function mostrarConsulta() {
 
       ocultarTodo();
@@ -785,6 +1061,7 @@
 
     }
 
+
     function mostrarInstalacion() {
 
       ocultarTodo();
@@ -794,6 +1071,7 @@
         .classList.remove("hidden");
 
     }
+
 
     /*
      * =====================================================
@@ -855,6 +1133,7 @@
 
     }
 
+
     /*
      * =====================================================
      * REGISTRAR VISITA
@@ -875,6 +1154,7 @@
           .value
           .trim();
 
+
       if (!nombre || !whatsapp) {
 
         mostrarError(
@@ -885,8 +1165,10 @@
 
       }
 
+
       const numero =
         whatsapp.replace(/\D/g, "");
+
 
       if (numero.length < 10) {
 
@@ -898,21 +1180,26 @@
 
       }
 
+
       localStorage.setItem(
         STORAGE_KEY,
         numero
       );
+
 
       const boton =
         document.getElementById(
           "btnRegistro"
         );
 
+
       boton.disabled = true;
+
 
       mostrarCargando(
         "Registrando tu visita..."
       );
+
 
       try {
 
@@ -927,9 +1214,11 @@
 
           });
 
+
         mostrarResultadoVisita(
           resultado
         );
+
 
       } catch (error) {
 
@@ -945,6 +1234,7 @@
       }
 
     }
+
 
     /*
      * =====================================================
@@ -962,6 +1252,7 @@
           .value
           .trim();
 
+
       if (!whatsapp) {
 
         mostrarError(
@@ -972,8 +1263,10 @@
 
       }
 
+
       const numero =
         whatsapp.replace(/\D/g, "");
+
 
       if (numero.length < 10) {
 
@@ -985,21 +1278,26 @@
 
       }
 
+
       localStorage.setItem(
         STORAGE_KEY,
         numero
       );
+
 
       const boton =
         document.getElementById(
           "btnConsulta"
         );
 
+
       boton.disabled = true;
+
 
       mostrarCargando(
         "Consultando tu Club Card..."
       );
+
 
       try {
 
@@ -1012,9 +1310,11 @@
 
           });
 
+
         mostrarResultadoConsulta(
           resultado
         );
+
 
       } catch (error) {
 
@@ -1030,6 +1330,7 @@
       }
 
     }
+
 
     /*
      * =====================================================
@@ -1051,6 +1352,7 @@
 
       }
 
+
       if (
         resultado.estado ===
         "corte_gratis"
@@ -1062,8 +1364,21 @@
 
           '<div class="member">' +
 
+          '<div class="member-top">' +
+
+          '<div class="member-brand">' +
+          'TCS MEMBER' +
+          '</div>' +
+
+          '<div class="member-status">' +
+          '<span class="status-dot"></span>' +
+          'ACTIVE MEMBER' +
+          '</div>' +
+
+          '</div>' +
+
           '<div class="member-label">' +
-          'THE CLUB STUDIO' +
+          'MEMBER NAME' +
           '</div>' +
 
           '<div class="nombre">' +
@@ -1073,8 +1388,12 @@
           ) +
           '</div>' +
 
+          '<div class="club-mark">' +
+          'THE CLUB STUDIO · MEMBER EXPERIENCE' +
+          '</div>' +
+
           '<div class="visitas">' +
-          '10' +
+          '10 / 10' +
           '</div>' +
 
           '<div class="visitas-label">' +
@@ -1084,6 +1403,11 @@
           '<div class="barra">' +
           '<div class="progreso" ' +
           'style="width:100%"></div>' +
+          '</div>' +
+
+          '<div class="progress-meta">' +
+          '<span>MEMBERSHIP PROGRESS</span>' +
+          '<span>100%</span>' +
           '</div>' +
 
           '<div class="unlocked">' +
@@ -1110,6 +1434,7 @@
 
       }
 
+
       if (
         resultado.estado ===
         "ya_registrada"
@@ -1124,12 +1449,14 @@
 
       }
 
+
       mostrarCard(
         resultado,
         false
       );
 
     }
+
 
     /*
      * =====================================================
@@ -1151,12 +1478,14 @@
 
       }
 
+
       mostrarCard(
         resultado,
         false
       );
 
     }
+
 
     /*
      * =====================================================
@@ -1175,10 +1504,12 @@
           "Miembro"
         );
 
+
       let visitas =
         Number(
           resultado.visitas || 0
         );
+
 
       if (visitas < 0) {
         visitas = 0;
@@ -1188,10 +1519,13 @@
         visitas = 10;
       }
 
+
       const porcentaje =
         (visitas / 10) * 100;
 
+
       let mensaje;
+
 
       if (yaRegistrada) {
 
@@ -1205,10 +1539,19 @@
 
       } else {
 
+        const restantes =
+          10 - visitas;
+
         mensaje =
-          "Visita registrada correctamente.";
+          "Te faltan " +
+          restantes +
+          (restantes === 1
+            ? " visita"
+            : " visitas") +
+          " para desbloquear tu beneficio.";
 
       }
+
 
       document
         .getElementById("resultado")
@@ -1216,12 +1559,29 @@
 
         '<div class="member">' +
 
+        '<div class="member-top">' +
+
+        '<div class="member-brand">' +
+        'TCS MEMBER' +
+        '</div>' +
+
+        '<div class="member-status">' +
+        '<span class="status-dot"></span>' +
+        'ACTIVE MEMBER' +
+        '</div>' +
+
+        '</div>' +
+
         '<div class="member-label">' +
-        'MEMBER' +
+        'MEMBER NAME' +
         '</div>' +
 
         '<div class="nombre">' +
         nombre +
+        '</div>' +
+
+        '<div class="club-mark">' +
+        'THE CLUB STUDIO · MEMBER EXPERIENCE' +
         '</div>' +
 
         '<div class="visitas">' +
@@ -1230,7 +1590,7 @@
         '</div>' +
 
         '<div class="visitas-label">' +
-        'VISITAS' +
+        'VISITAS COMPLETADAS' +
         '</div>' +
 
         '<div class="barra">' +
@@ -1240,6 +1600,13 @@
         porcentaje +
         '%"></div>' +
 
+        '</div>' +
+
+        '<div class="progress-meta">' +
+        '<span>MEMBERSHIP PROGRESS</span>' +
+        '<span>' +
+        Math.round(porcentaje) +
+        '%</span>' +
         '</div>' +
 
         '<div class="beneficio">' +
@@ -1259,6 +1626,7 @@
         '</div>';
 
     }
+
 
     /*
      * =====================================================
@@ -1284,6 +1652,7 @@
 
     }
 
+
     /*
      * =====================================================
      * ERROR
@@ -1305,6 +1674,7 @@
         '</div>';
 
     }
+
 
     /*
      * =====================================================
@@ -1346,6 +1716,7 @@
         );
 
     }
+
 
     /*
      * =====================================================
@@ -1391,6 +1762,7 @@
       );
 
     }
+
 
     /*
      * =====================================================
