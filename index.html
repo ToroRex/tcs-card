@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="theme-color" content="#080808">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent">
-  <meta name="apple-mobile-web-app-title"
-        content="TCS Card">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="TCS Card">
   <title>TCS Card — The Club Studio</title>
   <link rel="manifest" href="manifest.json">
 
@@ -217,10 +215,6 @@
       display: none !important;
     }
 
-    /* =========================
-       CLUB CARD PREMIUM
-       ========================= */
-
     .member {
       position: relative;
       margin-top: 20px;
@@ -394,28 +388,6 @@
       line-height: 1.55;
       color: #d0d0d0;
     }
-
-    .unlocked {
-      margin-top: 18px;
-      padding: 14px;
-      border: 1px solid #5a5a5a;
-      border-radius: 13px;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      color: #e1e1e1;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.012)
-        );
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.05);
-    }
-
-    /* =========================
-       QR PERSONAL
-       ========================= */
 
     .qr-box {
       margin-top: 20px;
@@ -612,13 +584,8 @@
 
   <div id="splash">
     <div>
-      <div class="splash-logo">
-        TCS
-      </div>
-
-      <div class="splash-name">
-        THE CLUB STUDIO
-      </div>
+      <div class="splash-logo">TCS</div>
+      <div class="splash-name">THE CLUB STUDIO</div>
     </div>
   </div>
 
@@ -641,11 +608,6 @@
       <div class="badge">
         DIGITAL MEMBERSHIP
       </div>
-
-
-      <!-- =========================
-           INICIO
-           ========================= -->
 
       <div id="inicio">
 
@@ -670,11 +632,6 @@
         </div>
 
       </div>
-
-
-      <!-- =========================
-           REGISTRO DE NUEVO CLIENTE
-           ========================= -->
 
       <div id="registro" class="hidden">
 
@@ -709,11 +666,6 @@
 
       </div>
 
-
-      <!-- =========================
-           CONSULTAR CLUB CARD
-           ========================= -->
-
       <div id="consulta" class="hidden">
 
         <input
@@ -740,11 +692,6 @@
         </div>
 
       </div>
-
-
-      <!-- =========================
-           INSTALACIÓN
-           ========================= -->
 
       <div id="instalacion" class="hidden">
 
@@ -789,13 +736,7 @@
 
       </div>
 
-
-      <!-- =========================
-           RESULTADO
-           ========================= -->
-
       <div id="resultado"></div>
-
 
       <div class="footer">
         MEMBER OF THE CLUB
@@ -805,46 +746,17 @@
 
   </div>
 
-
-  <!-- ==========================================
-       LIBRERÍA PARA GENERAR QR
-       ========================================== -->
-
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-  </script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <script>
-
-    /*
-     * =====================================================
-     * CONEXIÓN CON TU APPS SCRIPT
-     * =====================================================
-     */
 
     const APPS_SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqDqRqpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
 
-
     const STORAGE_KEY =
       "tcs_card_whatsapp";
 
-
-    /*
-     * =====================================================
-     * DATOS DEL MIEMBRO ACTUAL
-     * =====================================================
-     */
-
     let miembroActual = null;
-
-
-    /*
-     * =====================================================
-     * OCULTAR TODO
-     * =====================================================
-     */
 
     function ocultarTodo() {
 
@@ -869,13 +781,6 @@
         .innerHTML = "";
     }
 
-
-    /*
-     * =====================================================
-     * VOLVER AL INICIO
-     * =====================================================
-     */
-
     function volverInicio() {
 
       ocultarTodo();
@@ -886,13 +791,6 @@
 
       miembroActual = null;
     }
-
-
-    /*
-     * =====================================================
-     * MOSTRAR REGISTRO
-     * =====================================================
-     */
 
     function mostrarRegistro() {
 
@@ -915,13 +813,6 @@
       }
     }
 
-
-    /*
-     * =====================================================
-     * MOSTRAR CONSULTA
-     * =====================================================
-     */
-
     function mostrarConsulta() {
 
       ocultarTodo();
@@ -943,13 +834,6 @@
       }
     }
 
-
-    /*
-     * =====================================================
-     * MOSTRAR INSTALACIÓN
-     * =====================================================
-     */
-
     function mostrarInstalacion() {
 
       ocultarTodo();
@@ -958,13 +842,6 @@
         .getElementById("instalacion")
         .classList.remove("hidden");
     }
-
-
-    /*
-     * =====================================================
-     * LLAMADA AL APPS SCRIPT
-     * =====================================================
-     */
 
     async function llamarAppsScript(datos) {
 
@@ -984,7 +861,6 @@
           }
         );
 
-
       if (!respuesta.ok) {
 
         throw new Error(
@@ -992,13 +868,10 @@
         );
       }
 
-
       const texto =
         await respuesta.text();
 
-
       let resultado;
-
 
       try {
 
@@ -1012,7 +885,6 @@
         );
       }
 
-
       if (!resultado.ok) {
 
         throw new Error(
@@ -1021,18 +893,8 @@
         );
       }
 
-
       return resultado.resultado;
     }
-
-
-    /*
-     * =====================================================
-     * REGISTRARME
-     * CREA LA MEMBRESÍA
-     * NO REGISTRA VISITA
-     * =====================================================
-     */
 
     async function registrarme() {
 
@@ -1042,13 +904,11 @@
           .value
           .trim();
 
-
       const whatsapp =
         document
           .getElementById("whatsapp")
           .value
           .trim();
-
 
       if (!nombre || !whatsapp) {
 
@@ -1059,13 +919,11 @@
         return;
       }
 
-
       const numero =
         whatsapp.replace(
           /\D/g,
           ""
         );
-
 
       if (numero.length < 10) {
 
@@ -1076,20 +934,16 @@
         return;
       }
 
-
       const boton =
         document.getElementById(
           "btnRegistro"
         );
 
-
       boton.disabled = true;
-
 
       mostrarCargando(
         "Creando tu TCS Card..."
       );
-
 
       try {
 
@@ -1097,21 +951,15 @@
           await llamarAppsScript({
 
             accion:
-              "registrar_cliente",
+              "registrarme",
 
             nombre:
               nombre,
 
             whatsapp:
               numero
+
           });
-
-
-        /*
-         * ===============================================
-         * YA EXISTE
-         * ===============================================
-         */
 
         if (
           resultado &&
@@ -1124,25 +972,15 @@
             numero
           );
 
-
           miembroActual =
             resultado;
-
 
           mostrarClienteExistente(
             resultado
           );
 
-
           return;
         }
-
-
-        /*
-         * ===============================================
-         * CLIENTE CREADO
-         * ===============================================
-         */
 
         if (
           resultado &&
@@ -1155,19 +993,15 @@
             numero
           );
 
-
           miembroActual =
             resultado;
-
 
           mostrarRegistroExitoso(
             resultado
           );
 
-
           return;
         }
-
 
         throw new Error(
           "No se pudo crear tu membresía."
@@ -1185,13 +1019,6 @@
         boton.disabled = false;
       }
     }
-
-
-    /*
-     * =====================================================
-     * REGISTRO EXITOSO
-     * =====================================================
-     */
 
     function mostrarRegistroExitoso(
       resultado
@@ -1243,8 +1070,7 @@
 
         '<div class="barra">' +
 
-        '<div class="progreso" ' +
-        'style="width:0%">' +
+        '<div class="progreso" style="width:0%">' +
         '</div>' +
 
         '</div>' +
@@ -1269,9 +1095,7 @@
 
         '</div>' +
 
-        '<button ' +
-        'style="margin-top:18px" ' +
-        'onclick="mostrarQR()">' +
+        '<button style="margin-top:18px" onclick="mostrarQR()">' +
         'MI QR' +
         '</button>' +
 
@@ -1279,13 +1103,6 @@
 
         '</div>';
     }
-
-
-    /*
-     * =====================================================
-     * CLIENTE YA EXISTENTE
-     * =====================================================
-     */
 
     function mostrarClienteExistente(
       resultado
@@ -1337,9 +1154,7 @@
 
         '</div>' +
 
-        '<button ' +
-        'style="margin-top:18px" ' +
-        'onclick="mostrarCard(miembroActual, false)">' +
+        '<button style="margin-top:18px" onclick="mostrarCard(miembroActual, false)">' +
         'VER MI CLUB CARD' +
         '</button>' +
 
@@ -1347,13 +1162,6 @@
 
         '</div>';
     }
-
-
-    /*
-     * =====================================================
-     * CONSULTAR CLUB CARD
-     * =====================================================
-     */
 
     async function consultarCard() {
 
@@ -1365,7 +1173,6 @@
           .value
           .trim();
 
-
       if (!whatsapp) {
 
         mostrarError(
@@ -1375,13 +1182,11 @@
         return;
       }
 
-
       const numero =
         whatsapp.replace(
           /\D/g,
           ""
         );
-
 
       if (numero.length < 10) {
 
@@ -1392,26 +1197,21 @@
         return;
       }
 
-
       localStorage.setItem(
         STORAGE_KEY,
         numero
       );
-
 
       const boton =
         document.getElementById(
           "btnConsulta"
         );
 
-
       boton.disabled = true;
-
 
       mostrarCargando(
         "Consultando tu Club Card..."
       );
-
 
       try {
 
@@ -1423,8 +1223,8 @@
 
             whatsapp:
               numero
-          });
 
+          });
 
         mostrarResultadoConsulta(
           resultado
@@ -1443,13 +1243,6 @@
       }
     }
 
-
-    /*
-     * =====================================================
-     * MOSTRAR RESULTADO DE CONSULTA
-     * =====================================================
-     */
-
     function mostrarResultadoConsulta(
       resultado
     ) {
@@ -1463,23 +1256,14 @@
         return;
       }
 
-
       miembroActual =
         resultado;
-
 
       mostrarCard(
         resultado,
         false
       );
     }
-
-
-    /*
-     * =====================================================
-     * MOSTRAR TARJETA
-     * =====================================================
-     */
 
     function mostrarCard(
       resultado,
@@ -1489,36 +1273,29 @@
       miembroActual =
         resultado;
 
-
       const nombre =
         escaparHTML(
           resultado.nombre ||
           "Miembro"
         );
 
-
       let visitas =
         Number(
           resultado.visitas || 0
         );
 
-
       if (visitas < 0) {
         visitas = 0;
       }
-
 
       if (visitas > 10) {
         visitas = 10;
       }
 
-
       const porcentaje =
         (visitas / 10) * 100;
 
-
       let mensaje;
-
 
       if (yaRegistrada) {
 
@@ -1530,11 +1307,15 @@
         mensaje =
           "Has completado tus 10 visitas.";
 
+      } else if (visitas === 0) {
+
+        mensaje =
+          "Tu membresía está activa. Tu primera visita será registrada por nuestro equipo al acudir al estudio.";
+
       } else {
 
         const restantes =
           10 - visitas;
-
 
         mensaje =
           "Te faltan " +
@@ -1546,7 +1327,6 @@
           ) +
           " para desbloquear tu beneficio.";
       }
-
 
       document
         .getElementById("resultado")
@@ -1626,21 +1406,12 @@
 
         '</div>' +
 
-        '<button ' +
-        'style="margin-top:18px" ' +
-        'onclick="mostrarQR()">' +
+        '<button style="margin-top:18px" onclick="mostrarQR()">' +
         'MI QR' +
         '</button>' +
 
         '</div>';
     }
-
-
-    /*
-     * =====================================================
-     * MOSTRAR QR PERSONAL
-     * =====================================================
-     */
 
     function mostrarQR() {
 
@@ -1656,21 +1427,17 @@
         return;
       }
 
-
       const id =
         String(
           miembroActual.id
         ).trim();
 
-
       ocultarResultadoParaQR();
-
 
       const resultado =
         document.getElementById(
           "resultado"
         );
-
 
       resultado.innerHTML =
 
@@ -1718,9 +1485,7 @@
 
         '<div class="qr-close">' +
 
-        '<button ' +
-        'class="secondary" ' +
-        'onclick="mostrarCard(miembroActual, false)">' +
+        '<button class="secondary" onclick="mostrarCard(miembroActual, false)">' +
 
         'VOLVER A MI CLUB CARD' +
 
@@ -1729,7 +1494,6 @@
         '</div>' +
 
         '</div>';
-
 
       if (
         typeof QRCode ===
@@ -1742,7 +1506,6 @@
 
         return;
       }
-
 
       new QRCode(
 
@@ -1769,10 +1532,10 @@
 
           correctLevel:
             QRCode.CorrectLevel.H
+
         }
       );
     }
-
 
     function ocultarResultadoParaQR() {
 
@@ -1780,13 +1543,6 @@
         .getElementById("resultado")
         .innerHTML = "";
     }
-
-
-    /*
-     * =====================================================
-     * CARGANDO
-     * =====================================================
-     */
 
     function mostrarCargando(
       texto
@@ -1805,13 +1561,6 @@
         '</div>';
     }
 
-
-    /*
-     * =====================================================
-     * ERROR
-     * =====================================================
-     */
-
     function mostrarError(
       texto
     ) {
@@ -1826,13 +1575,6 @@
 
         '</div>';
     }
-
-
-    /*
-     * =====================================================
-     * SEGURIDAD HTML
-     * =====================================================
-     */
 
     function escaparHTML(
       texto
@@ -1867,13 +1609,6 @@
           "&#039;"
         );
     }
-
-
-    /*
-     * =====================================================
-     * SERVICE WORKER
-     * =====================================================
-     */
 
     if (
       "serviceWorker" in navigator
@@ -1912,13 +1647,6 @@
         }
       );
     }
-
-
-    /*
-     * =====================================================
-     * SPLASH SCREEN
-     * =====================================================
-     */
 
     window.addEventListener(
       "load",
