@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <meta name="theme-color" content="#080808">
+  <meta name="theme-color" content="#050505">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style"
@@ -26,7 +26,7 @@
     }
 
     html {
-      background: #080808;
+      background: #050505;
     }
 
     body {
@@ -42,10 +42,11 @@
 
       background:
         radial-gradient(
-          circle at 50% -10%,
-          #303030 0%,
-          #151515 35%,
-          #080808 75%
+          circle at 50% -12%,
+          #363636 0%,
+          #181818 30%,
+          #0b0b0b 62%,
+          #050505 100%
         );
 
       color: white;
@@ -68,17 +69,22 @@
 
       position: fixed;
 
-      width: 300px;
-      height: 300px;
+      width: 360px;
+      height: 360px;
 
-      top: -170px;
+      top: -190px;
       left: 50%;
 
       transform: translateX(-50%);
 
-      background: rgba(255,255,255,.055);
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.09),
+          rgba(255,255,255,0) 70%
+        );
 
-      filter: blur(70px);
+      filter: blur(30px);
 
       pointer-events: none;
     }
@@ -96,12 +102,13 @@
       background:
         linear-gradient(
           145deg,
-          #252525 0%,
-          #151515 45%,
-          #0e0e0e 100%
+          #292929 0%,
+          #171717 27%,
+          #101010 58%,
+          #080808 100%
         );
 
-      border: 1px solid #3b3b3b;
+      border: 1px solid #454545;
 
       border-radius: 30px;
 
@@ -110,48 +117,140 @@
       text-align: center;
 
       box-shadow:
-        0 30px 90px rgba(0,0,0,.75);
+        0 35px 100px rgba(0,0,0,.82),
+        inset 0 1px 0 rgba(255,255,255,.07);
 
       overflow: hidden;
     }
 
+    .card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      top: -150px;
+      right: -80px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.13),
+          rgba(255,255,255,0) 70%
+        );
+
+      filter: blur(15px);
+
+      pointer-events: none;
+    }
+
+    .card::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      top: 0;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.35),
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
     .brand {
-      font-size: 10px;
+      position: relative;
+      z-index: 1;
+
+      font-size: 9px;
       letter-spacing: 5px;
-      color: #aaa;
-      margin-bottom: 12px;
+
+      color: #a7a7a7;
+
+      margin-bottom: 11px;
     }
 
     .title {
+      position: relative;
+      z-index: 1;
+
       font-family: Georgia, serif;
-      font-size: 34px;
-      letter-spacing: 2px;
+
+      font-size: 35px;
+
+      letter-spacing: 3px;
+
       margin-bottom: 5px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #d4d4d4 48%,
+          #777777 100%
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
     }
 
     .subtitle {
-      color: #777;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+
+      color: #727272;
+
+      font-size: 10px;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 27px;
     }
 
     .badge {
+      position: relative;
+      z-index: 1;
+
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
 
-      padding: 7px 12px;
+      padding: 7px 13px;
 
-      border: 1px solid #393939;
+      border: 1px solid #4a4a4a;
+
       border-radius: 50px;
 
-      color: #888;
+      color: #a0a0a0;
 
-      font-size: 9px;
-      letter-spacing: 2px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.015)
+        );
 
-      margin-bottom: 18px;
+      font-size: 8px;
+
+      letter-spacing: 2.5px;
+
+      margin-bottom: 19px;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.05);
     }
 
     .menu {
@@ -161,26 +260,40 @@
 
     button {
       width: 100%;
+
       min-height: 54px;
 
       padding: 15px;
 
       border: none;
+
       border-radius: 15px;
 
-      background: #f4f4f4;
+      background:
+        linear-gradient(
+          180deg,
+          #f7f7f7 0%,
+          #cfcfcf 100%
+        );
+
       color: #101010;
 
-      font-size: 12px;
+      font-size: 11px;
+
       font-weight: 700;
 
-      letter-spacing: 1.3px;
+      letter-spacing: 1.5px;
 
       cursor: pointer;
 
       transition:
         transform .15s ease,
-        opacity .15s ease;
+        opacity .15s ease,
+        box-shadow .15s ease;
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.8);
     }
 
     button:active {
@@ -192,15 +305,35 @@
     }
 
     .secondary {
-      background: transparent;
-      color: white;
-      border: 1px solid #414141;
+      background:
+        linear-gradient(
+          145deg,
+          #1b1b1b,
+          #101010
+        );
+
+      color: #eeeeee;
+
+      border: 1px solid #484848;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06);
     }
 
     .dark-button {
-      background: #191919;
-      color: #ddd;
-      border: 1px solid #383838;
+      background:
+        linear-gradient(
+          145deg,
+          #151515,
+          #0b0b0b
+        );
+
+      color: #bdbdbd;
+
+      border: 1px solid #363636;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04);
     }
 
     input {
@@ -210,9 +343,14 @@
 
       border-radius: 15px;
 
-      border: 1px solid #3d3d3d;
+      border: 1px solid #414141;
 
-      background: #0d0d0d;
+      background:
+        linear-gradient(
+          145deg,
+          #111111,
+          #080808
+        );
 
       color: white;
 
@@ -225,40 +363,107 @@
       text-align: center;
 
       -webkit-appearance: none;
+
+      box-shadow:
+        inset 0 2px 8px rgba(0,0,0,.4);
+    }
+
+    input::placeholder {
+      color: #626262;
     }
 
     input:focus {
-      border-color: #777;
+      border-color: #777777;
+
+      box-shadow:
+        0 0 0 1px #555555,
+        inset 0 2px 8px rgba(0,0,0,.4);
     }
 
     .hidden {
       display: none !important;
     }
 
+    /*
+     * =====================================================
+     * CLUB CARD PREMIUM
+     * =====================================================
+     */
+
     .member {
+      position: relative;
+
       margin-top: 20px;
 
-      border: 1px solid #414141;
+      border: 1px solid #4a4a4a;
 
-      border-radius: 22px;
+      border-radius: 24px;
 
-      padding: 25px 19px;
+      padding: 25px 19px 22px;
 
       background:
         linear-gradient(
           145deg,
-          rgba(255,255,255,.045),
-          rgba(255,255,255,.012)
+          #242424 0%,
+          #151515 42%,
+          #0a0a0a 100%
         );
 
       animation: appear .35s ease;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.07);
+    }
+
+    .member::before {
+      content: "";
+
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      top: -115px;
+      right: -65px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.12),
+          rgba(255,255,255,0) 70%
+        );
+
+      filter: blur(12px);
+    }
+
+    .member::after {
+      content: "";
+
+      position: absolute;
+
+      left: 15px;
+      right: 15px;
+      top: 0;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.4),
+          transparent
+        );
     }
 
     @keyframes appear {
 
       from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(10px);
       }
 
       to {
@@ -268,42 +473,171 @@
 
     }
 
+    .member-top {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 22px;
+
+      text-align: left;
+    }
+
     .member-label {
-      font-size: 9px;
+      font-size: 8px;
+
       letter-spacing: 3px;
-      color: #777;
-      margin-bottom: 8px;
+
+      color: #777777;
+    }
+
+    .member-status {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      font-size: 7px;
+
+      letter-spacing: 2px;
+
+      color: #9b9b9b;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #d5d5d5;
+
+      box-shadow:
+        0 0 8px rgba(255,255,255,.55);
+    }
+
+    .member-name-box {
+      position: relative;
+      z-index: 1;
+
+      text-align: left;
+
+      padding-bottom: 18px;
+
+      border-bottom: 1px solid #303030;
+    }
+
+    .member-name-caption {
+      font-size: 7px;
+
+      letter-spacing: 2.5px;
+
+      color: #686868;
+
+      margin-bottom: 6px;
     }
 
     .nombre {
       font-family: Georgia, serif;
-      font-size: 27px;
-      margin-bottom: 25px;
+
+      font-size: 28px;
+
+      letter-spacing: .5px;
+
+      color: #eeeeee;
+
+      margin-bottom: 0;
+    }
+
+    .member-chip {
+      position: relative;
+      z-index: 1;
+
+      margin-top: 16px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      color: #777777;
+
+      font-size: 7px;
+
+      letter-spacing: 2px;
+    }
+
+    .member-chip span:last-child {
+      color: #a3a3a3;
+    }
+
+    .visitas-area {
+      position: relative;
+      z-index: 1;
+
+      margin-top: 22px;
+
+      text-align: center;
     }
 
     .visitas {
-      font-size: 50px;
+      font-size: 48px;
+
+      line-height: 1;
+
       font-weight: 600;
-      letter-spacing: -1px;
+
+      letter-spacing: -2px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #9d9d9d
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
     }
 
     .visitas-label {
-      font-size: 9px;
+      font-size: 8px;
+
       letter-spacing: 3px;
-      color: #777;
-      margin-bottom: 20px;
+
+      color: #6e6e6e;
+
+      margin-top: 8px;
+
+      margin-bottom: 18px;
     }
 
     .barra {
-      width: 100%;
-      height: 7px;
+      position: relative;
 
-      background: #303030;
+      width: 100%;
+
+      height: 6px;
+
+      background: #292929;
 
       border-radius: 20px;
+
       overflow: hidden;
 
-      margin-bottom: 23px;
+      margin-bottom: 9px;
+
+      box-shadow:
+        inset 0 1px 3px rgba(0,0,0,.8);
     }
 
     .progreso {
@@ -312,49 +646,88 @@
       background:
         linear-gradient(
           90deg,
-          #777,
-          #fff
+          #686868,
+          #dcdcdc,
+          #ffffff
         );
 
       border-radius: 20px;
 
       transition: width .7s ease;
+
+      box-shadow:
+        0 0 9px rgba(255,255,255,.25);
+    }
+
+    .progress-text {
+      text-align: right;
+
+      font-size: 7px;
+
+      color: #707070;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 20px;
     }
 
     .beneficio {
-      border-top: 1px solid #333;
+      position: relative;
+      z-index: 1;
 
-      padding-top: 19px;
-      margin-top: 5px;
+      border-top: 1px solid #303030;
+
+      padding-top: 18px;
+
+      margin-top: 4px;
     }
 
     .beneficio-label {
-      font-size: 8px;
+      font-size: 7px;
+
       letter-spacing: 3px;
-      color: #777;
-      margin-bottom: 9px;
+
+      color: #686868;
+
+      margin-bottom: 8px;
     }
 
     .beneficio-texto {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #ddd;
+      font-size: 13px;
+
+      line-height: 1.55;
+
+      color: #cfcfcf;
     }
 
     .unlocked {
-      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+
+      margin-top: 17px;
 
       padding: 14px;
 
-      border: 1px solid #555;
+      border: 1px solid #666666;
 
       border-radius: 13px;
 
-      font-size: 11px;
+      font-size: 9px;
 
-      letter-spacing: 1px;
+      letter-spacing: 2px;
 
-      background: rgba(255,255,255,.025);
+      color: #ededed;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.08),
+          rgba(255,255,255,.025)
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 7px 20px rgba(0,0,0,.25);
     }
 
     .success {
@@ -402,9 +775,9 @@
     .footer {
       margin-top: 23px;
 
-      color: #5f5f5f;
+      color: #505050;
 
-      font-size: 9px;
+      font-size: 8px;
 
       letter-spacing: 3px;
     }
@@ -416,20 +789,32 @@
 
       border-radius: 18px;
 
-      border: 1px solid #3b3b3b;
+      border: 1px solid #3d3d3d;
 
-      background: #111;
+      background:
+        linear-gradient(
+          145deg,
+          #151515,
+          #0b0b0b
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04);
     }
 
     .install-title {
-      font-size: 11px;
-      letter-spacing: 2px;
+      font-size: 10px;
+
+      letter-spacing: 2.5px;
+
       margin-bottom: 13px;
     }
 
     .install-text {
-      color: #999;
+      color: #999999;
+
       font-size: 12px;
+
       line-height: 1.6;
     }
 
@@ -439,7 +824,8 @@
       width: 28px;
       height: 28px;
 
-      border: 2px solid #333;
+      border: 2px solid #333333;
+
       border-top-color: white;
 
       border-radius: 50%;
@@ -448,13 +834,16 @@
     }
 
     @keyframes spin {
+
       to {
         transform: rotate(360deg);
       }
+
     }
 
     #splash {
       position: fixed;
+
       inset: 0;
 
       z-index: 9999;
@@ -462,7 +851,7 @@
       background:
         radial-gradient(
           circle at center,
-          #262626 0%,
+          #292929 0%,
           #101010 45%,
           #050505 100%
         );
@@ -470,6 +859,7 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       text-align: center;
@@ -481,7 +871,9 @@
 
     #splash.hide {
       opacity: 0;
+
       visibility: hidden;
+
       pointer-events: none;
     }
 
@@ -493,10 +885,22 @@
       letter-spacing: 6px;
 
       margin-bottom: 12px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #858585
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
     }
 
     .splash-name {
-      color: #777;
+      color: #777777;
 
       font-size: 9px;
 
@@ -557,13 +961,17 @@
           <button
             class="secondary"
             onclick="mostrarConsulta()">
+
             MI CLUB CARD
+
           </button>
 
           <button
             class="dark-button"
             onclick="mostrarInstalacion()">
+
             ＋ AÑADIR TCS CARD
+
           </button>
 
         </div>
@@ -812,7 +1220,7 @@
 
     /*
      * =====================================================
-     * LLAMADA AL APPS SCRIPT
+     * CONEXIÓN CON APPS SCRIPT
      * =====================================================
      */
 
@@ -832,6 +1240,7 @@
         }
       );
 
+
       if (!respuesta.ok) {
 
         throw new Error(
@@ -840,14 +1249,18 @@
 
       }
 
+
       const texto =
         await respuesta.text();
 
+
       let resultado;
+
 
       try {
 
-        resultado = JSON.parse(texto);
+        resultado =
+          JSON.parse(texto);
 
       } catch (error) {
 
@@ -857,6 +1270,7 @@
 
       }
 
+
       if (!resultado.ok) {
 
         throw new Error(
@@ -865,6 +1279,7 @@
         );
 
       }
+
 
       return resultado.resultado;
 
@@ -884,6 +1299,7 @@
           .getElementById("nombre")
           .value
           .trim();
+
 
       const whatsapp =
         document
@@ -1071,7 +1487,7 @@
 
     /*
      * =====================================================
-     * MOSTRAR RESULTADO DE REGISTRO
+     * RESULTADO REGISTRO
      * =====================================================
      */
 
@@ -1101,8 +1517,23 @@
 
           '<div class="member">' +
 
+          '<div class="member-top">' +
+
           '<div class="member-label">' +
-          'THE CLUB STUDIO' +
+          'TCS MEMBER' +
+          '</div>' +
+
+          '<div class="member-status">' +
+          '<span class="status-dot"></span>' +
+          'ACTIVE MEMBER' +
+          '</div>' +
+
+          '</div>' +
+
+          '<div class="member-name-box">' +
+
+          '<div class="member-name-caption">' +
+          'MEMBER NAME' +
           '</div>' +
 
           '<div class="nombre">' +
@@ -1112,8 +1543,17 @@
           ) +
           '</div>' +
 
+          '</div>' +
+
+          '<div class="member-chip">' +
+          '<span>THE CLUB STUDIO</span>' +
+          '<span>MEMBER EXPERIENCE</span>' +
+          '</div>' +
+
+          '<div class="visitas-area">' +
+
           '<div class="visitas">' +
-          '10' +
+          '10 / 10' +
           '</div>' +
 
           '<div class="visitas-label">' +
@@ -1125,8 +1565,14 @@
           'style="width:100%"></div>' +
           '</div>' +
 
+          '<div class="progress-text">' +
+          '100% COMPLETE' +
+          '</div>' +
+
+          '</div>' +
+
           '<div class="unlocked">' +
-          '✦ BENEFICIO DESBLOQUEADO ✦' +
+          '✦ BENEFIT UNLOCKED ✦' +
           '</div>' +
 
           '<div class="beneficio">' +
@@ -1137,8 +1583,7 @@
 
           '<div class="beneficio-texto">' +
           'Has completado tus 10 visitas. ' +
-          'Tu próxima visita corresponde a tu ' +
-          'beneficio gratuito.' +
+          'Tu beneficio exclusivo está listo.' +
           '</div>' +
 
           '</div>' +
@@ -1175,7 +1620,7 @@
 
     /*
      * =====================================================
-     * MOSTRAR RESULTADO DE CONSULTA
+     * RESULTADO CONSULTA
      * =====================================================
      */
 
@@ -1204,7 +1649,7 @@
 
     /*
      * =====================================================
-     * MOSTRAR TARJETA
+     * TARJETA PREMIUM
      * =====================================================
      */
 
@@ -1229,6 +1674,7 @@
       if (visitas < 0) {
         visitas = 0;
       }
+
 
       if (visitas > 10) {
         visitas = 10;
@@ -1255,7 +1701,7 @@
       } else {
 
         mensaje =
-          "Visita registrada correctamente.";
+          "Tu membresía continúa avanzando.";
 
       }
 
@@ -1266,13 +1712,37 @@
 
         '<div class="member">' +
 
+        '<div class="member-top">' +
+
         '<div class="member-label">' +
-        'MEMBER' +
+        'TCS MEMBER' +
+        '</div>' +
+
+        '<div class="member-status">' +
+        '<span class="status-dot"></span>' +
+        'ACTIVE MEMBER' +
+        '</div>' +
+
+        '</div>' +
+
+        '<div class="member-name-box">' +
+
+        '<div class="member-name-caption">' +
+        'MEMBER NAME' +
         '</div>' +
 
         '<div class="nombre">' +
         nombre +
         '</div>' +
+
+        '</div>' +
+
+        '<div class="member-chip">' +
+        '<span>THE CLUB STUDIO</span>' +
+        '<span>MEMBER EXPERIENCE</span>' +
+        '</div>' +
+
+        '<div class="visitas-area">' +
 
         '<div class="visitas">' +
         visitas +
@@ -1280,7 +1750,7 @@
         '</div>' +
 
         '<div class="visitas-label">' +
-        'VISITAS' +
+        'VISITAS COMPLETADAS' +
         '</div>' +
 
         '<div class="barra">' +
@@ -1289,6 +1759,13 @@
         'style="width:' +
         porcentaje +
         '%"></div>' +
+
+        '</div>' +
+
+        '<div class="progress-text">' +
+        Math.round(porcentaje) +
+        '% COMPLETE' +
+        '</div>' +
 
         '</div>' +
 
@@ -1313,7 +1790,7 @@
 
     /*
      * =====================================================
-     * CARGANDO
+     * LOADING
      * =====================================================
      */
 
@@ -1449,7 +1926,7 @@
 
     /*
      * =====================================================
-     * SPLASH SCREEN
+     * SPLASH
      * =====================================================
      */
 
