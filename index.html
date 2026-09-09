@@ -524,7 +524,6 @@
 
   </div>
 
-
   <div class="app">
 
     <div class="card">
@@ -544,7 +543,6 @@
       <div class="badge">
         DIGITAL MEMBERSHIP
       </div>
-
 
       <div id="inicio">
 
@@ -569,7 +567,6 @@
         </div>
 
       </div>
-
 
       <div id="registro" class="hidden">
 
@@ -608,7 +605,6 @@
 
       </div>
 
-
       <div id="consulta" class="hidden">
 
         <input
@@ -639,7 +635,6 @@
         </div>
 
       </div>
-
 
       <div id="instalacion" class="hidden">
 
@@ -686,9 +681,7 @@
 
       </div>
 
-
       <div id="resultado"></div>
-
 
       <div class="footer">
         MEMBER OF THE CLUB
@@ -697,7 +690,6 @@
     </div>
 
   </div>
-
 
   <script>
 
@@ -710,10 +702,8 @@
     const APPS_SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
 
-
     const STORAGE_KEY =
       "tcs_card_whatsapp";
-
 
     function ocultarTodo() {
 
@@ -739,7 +729,6 @@
 
     }
 
-
     function volverInicio() {
 
       ocultarTodo();
@@ -749,7 +738,6 @@
         .classList.remove("hidden");
 
     }
-
 
     function mostrarRegistro() {
 
@@ -774,7 +762,6 @@
 
     }
 
-
     function mostrarConsulta() {
 
       ocultarTodo();
@@ -798,7 +785,6 @@
 
     }
 
-
     function mostrarInstalacion() {
 
       ocultarTodo();
@@ -808,7 +794,6 @@
         .classList.remove("hidden");
 
     }
-
 
     /*
      * =====================================================
@@ -870,7 +855,6 @@
 
     }
 
-
     /*
      * =====================================================
      * REGISTRAR VISITA
@@ -891,7 +875,6 @@
           .value
           .trim();
 
-
       if (!nombre || !whatsapp) {
 
         mostrarError(
@@ -902,10 +885,8 @@
 
       }
 
-
       const numero =
         whatsapp.replace(/\D/g, "");
-
 
       if (numero.length < 10) {
 
@@ -917,26 +898,21 @@
 
       }
 
-
       localStorage.setItem(
         STORAGE_KEY,
         numero
       );
-
 
       const boton =
         document.getElementById(
           "btnRegistro"
         );
 
-
       boton.disabled = true;
-
 
       mostrarCargando(
         "Registrando tu visita..."
       );
-
 
       try {
 
@@ -951,11 +927,9 @@
 
           });
 
-
         mostrarResultadoVisita(
           resultado
         );
-
 
       } catch (error) {
 
@@ -971,7 +945,6 @@
       }
 
     }
-
 
     /*
      * =====================================================
@@ -989,7 +962,6 @@
           .value
           .trim();
 
-
       if (!whatsapp) {
 
         mostrarError(
@@ -1000,10 +972,8 @@
 
       }
 
-
       const numero =
         whatsapp.replace(/\D/g, "");
-
 
       if (numero.length < 10) {
 
@@ -1015,26 +985,21 @@
 
       }
 
-
       localStorage.setItem(
         STORAGE_KEY,
         numero
       );
-
 
       const boton =
         document.getElementById(
           "btnConsulta"
         );
 
-
       boton.disabled = true;
-
 
       mostrarCargando(
         "Consultando tu Club Card..."
       );
-
 
       try {
 
@@ -1047,11 +1012,9 @@
 
           });
 
-
         mostrarResultadoConsulta(
           resultado
         );
-
 
       } catch (error) {
 
@@ -1067,7 +1030,6 @@
       }
 
     }
-
 
     /*
      * =====================================================
@@ -1088,7 +1050,6 @@
         return;
 
       }
-
 
       if (
         resultado.estado ===
@@ -1149,7 +1110,6 @@
 
       }
 
-
       if (
         resultado.estado ===
         "ya_registrada"
@@ -1164,14 +1124,12 @@
 
       }
 
-
       mostrarCard(
         resultado,
         false
       );
 
     }
-
 
     /*
      * =====================================================
@@ -1193,14 +1151,12 @@
 
       }
 
-
       mostrarCard(
         resultado,
         false
       );
 
     }
-
 
     /*
      * =====================================================
@@ -1219,12 +1175,10 @@
           "Miembro"
         );
 
-
       let visitas =
         Number(
           resultado.visitas || 0
         );
-
 
       if (visitas < 0) {
         visitas = 0;
@@ -1234,13 +1188,10 @@
         visitas = 10;
       }
 
-
       const porcentaje =
         (visitas / 10) * 100;
 
-
       let mensaje;
-
 
       if (yaRegistrada) {
 
@@ -1258,7 +1209,6 @@
           "Visita registrada correctamente.";
 
       }
-
 
       document
         .getElementById("resultado")
@@ -1310,7 +1260,6 @@
 
     }
 
-
     /*
      * =====================================================
      * CARGANDO
@@ -1335,7 +1284,6 @@
 
     }
 
-
     /*
      * =====================================================
      * ERROR
@@ -1357,7 +1305,6 @@
         '</div>';
 
     }
-
 
     /*
      * =====================================================
@@ -1399,7 +1346,6 @@
         );
 
     }
-
 
     /*
      * =====================================================
@@ -1445,7 +1391,6 @@
       );
 
     }
-
 
     /*
      * =====================================================
