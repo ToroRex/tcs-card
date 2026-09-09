@@ -95,6 +95,10 @@
       transform: scale(.98);
     }
 
+    button:disabled {
+      cursor: not-allowed;
+    }
+
     .primary {
       background: #fff;
       color: #000;
@@ -190,13 +194,6 @@
       margin-top: 25px;
     }
 
-    .camera-note {
-      text-align: center;
-      color: #666;
-      font-size: 11px;
-      margin-top: 12px;
-    }
-
     @media (max-width: 420px) {
       .card {
         padding: 20px;
@@ -204,8 +201,10 @@
     }
   </style>
 
-  <!-- Librería para leer QR -->
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <script
+    src="https://unpkg.com/html5-qrcode"
+    type="text/javascript">
+  </script>
 </head>
 
 <body>
@@ -217,7 +216,9 @@
       <p>TCS STAFF</p>
     </div>
 
+
     <!-- LOGIN -->
+
     <div id="loginCard" class="card">
 
       <div class="section-title">
@@ -231,16 +232,22 @@
         autocomplete="off"
       >
 
-      <button class="primary" onclick="iniciarSesion()">
+      <button
+        class="primary"
+        onclick="iniciarSesion()">
         ENTRAR
       </button>
 
-      <div id="loginMessage" class="message"></div>
+      <div
+        id="loginMessage"
+        class="message">
+      </div>
 
     </div>
 
 
     <!-- PANEL STAFF -->
+
     <div id="staffCard" class="card hidden">
 
       <div class="section-title">
@@ -254,55 +261,70 @@
 
       <div id="reader"></div>
 
-      <div id="scannerMessage" class="message"></div>
+      <div
+        id="scannerMessage"
+        class="message">
+      </div>
 
-      <!-- DATOS DEL CLIENTE -->
-      <div id="memberBox" class="member-box hidden">
+
+      <!-- CLIENTE -->
+
+      <div
+        id="memberBox"
+        class="member-box hidden">
 
         <div class="member-label">
           CLIENTE
         </div>
 
-        <div id="memberName" class="member-value">
+        <div
+          id="memberName"
+          class="member-value">
           —
         </div>
+
 
         <div class="member-label">
           MEMBER ID
         </div>
 
-        <div id="memberID" class="member-value member-id">
+        <div
+          id="memberID"
+          class="member-value member-id">
           —
         </div>
+
 
         <div class="member-label">
           VISITAS ACTUALES
         </div>
 
-        <div id="memberVisits" class="member-value visits">
+        <div
+          id="memberVisits"
+          class="member-value visits">
           —
         </div>
 
+
         <button
           class="confirm"
-          onclick="confirmarVisita()"
-        >
+          onclick="confirmarVisita()">
           CONFIRMAR VISITA
         </button>
 
+
         <button
           class="secondary"
-          onclick="reiniciarEscaner()"
-        >
+          onclick="reiniciarEscaner()">
           ESCANEAR OTRO
         </button>
 
       </div>
 
+
       <button
         class="danger logout"
-        onclick="cerrarSesion()"
-      >
+        onclick="cerrarSesion()">
         CERRAR SESIÓN
       </button>
 
@@ -317,17 +339,15 @@
     "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
 
 
-  /*
-   * El código NO se guarda en el HTML.
-   * Solo permanece en memoria mientras esta página está abierta.
-   */
   let staffCode = "";
-
   let scanner = null;
   let scannerActivo = false;
-
   let clienteActual = null;
 
+
+  /* =====================================================
+     LOGIN
+     ===================================================== */
 
   function iniciarSesion() {
 
@@ -337,51 +357,80 @@
     const message =
       document.getElementById("loginMessage");
 
+
     if (!codigo) {
+
       message.textContent =
         "Introduce el código de acceso.";
-      message.className = "message error";
+
+      message.className =
+        "message error";
+
       return;
     }
 
-    message.textContent = "Verificando...";
-    message.className = "message";
+
+    message.textContent =
+      "Verificando...";
+
+    message.className =
+      "message";
 
 
     fetch(API_URL, {
+
       method: "POST",
+
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type":
+          "text/plain;charset=utf-8"
       },
+
       body: JSON.stringify({
+
         accion: "staff_login",
         codigo: codigo
+
       })
+
     })
+
     .then(response => response.json())
+
     .then(data => {
 
-      if (data.ok) {
+      if (
+        data.ok &&
+        data.resultado &&
+        data.resultado.autorizado
+      ) {
 
         staffCode = codigo;
+
 
         sessionStorage.setItem(
           "tcs_staff_authorized",
           "true"
         );
 
-        document.getElementById("loginCard")
-          .classList.add("hidden");
 
-        document.getElementById("staffCard")
-          .classList.remove("hidden");
+        document
+          .getElementById("loginCard")
+          .classList
+          .add("hidden");
+
+
+        document
+          .getElementById("staffCard")
+          .classList
+          .remove("hidden");
+
 
         iniciarEscaner();
 
       } else {
 
         message.textContent =
-          data.mensaje ||
           "Código de acceso incorrecto.";
 
         message.className =
@@ -390,6 +439,7 @@
       }
 
     })
+
     .catch(error => {
 
       console.error(error);
@@ -405,51 +455,74 @@
   }
 
 
+  /* =====================================================
+     INICIAR ESCÁNER
+     ===================================================== */
+
   function iniciarEscaner() {
 
     if (scannerActivo) return;
 
+
     scanner =
       new Html5Qrcode("reader");
 
+
     const config = {
+
       fps: 10,
+
       qrbox: {
         width: 250,
         height: 250
       }
+
     };
 
 
     scanner.start(
+
       {
         facingMode: "environment"
       },
+
       config,
+
       qrDetectado,
+
       error => {
-        // Ignoramos errores normales de lectura.
+        // Errores normales de lectura ignorados.
       }
+
     )
+
     .then(() => {
 
       scannerActivo = true;
 
-      document.getElementById("scannerMessage")
+
+      document
+        .getElementById("scannerMessage")
         .textContent =
         "Apunta la cámara al Member QR.";
 
     })
+
     .catch(error => {
 
       console.error(error);
 
-      document.getElementById("scannerMessage")
-        .textContent =
+
+      const message =
+        document.getElementById(
+          "scannerMessage"
+        );
+
+
+      message.textContent =
         "No se pudo iniciar la cámara. Revisa los permisos del navegador.";
 
-      document.getElementById("scannerMessage")
-        .className =
+      message.className =
         "message error";
 
     });
@@ -457,23 +530,26 @@
   }
 
 
+  /* =====================================================
+     QR DETECTADO
+     ===================================================== */
+
   function qrDetectado(decodedText) {
 
     if (!decodedText) return;
 
+    if (clienteActual) return;
+
+
     const memberID =
       decodedText.trim();
-
-    /*
-     * Evita múltiples lecturas consecutivas.
-     */
-    if (clienteActual) return;
 
 
     detenerEscaner();
 
 
-    document.getElementById("scannerMessage")
+    document
+      .getElementById("scannerMessage")
       .textContent =
       "QR detectado. Verificando membresía...";
 
@@ -483,20 +559,31 @@
   }
 
 
+  /* =====================================================
+     DETENER ESCÁNER
+     ===================================================== */
+
   function detenerEscaner() {
 
-    if (!scanner || !scannerActivo) return;
+    if (!scanner || !scannerActivo) {
+      return;
+    }
+
 
     scanner.stop()
+
       .then(() => {
 
         scanner.clear();
+
         scannerActivo = false;
 
       })
+
       .catch(error => {
 
         console.error(error);
+
         scannerActivo = false;
 
       });
@@ -504,92 +591,153 @@
   }
 
 
+  /* =====================================================
+     BUSCAR MEMBER ID
+     ===================================================== */
+
   function buscarMiembro(memberID) {
 
-    /*
-     * En este paso consultamos el backend.
-     * La siguiente modificación del Apps Script
-     * permitirá buscar directamente por Member ID.
-     */
-
     fetch(API_URL, {
+
       method: "POST",
+
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type":
+          "text/plain;charset=utf-8"
       },
+
       body: JSON.stringify({
+
         accion: "staff_buscar",
+
         codigo: staffCode,
+
         memberID: memberID
+
       })
+
     })
+
     .then(response => response.json())
+
     .then(data => {
+
+      console.log("Respuesta STAFF:", data);
+
 
       if (!data.ok) {
 
-        document.getElementById("scannerMessage")
-          .textContent =
-          data.mensaje ||
+        const message =
+          document.getElementById(
+            "scannerMessage"
+          );
+
+
+        message.textContent =
+          data.error ||
           "No se encontró esta membresía.";
 
-        document.getElementById("scannerMessage")
-          .className =
+        message.className =
           "message error";
 
+
         setTimeout(() => {
+
           reiniciarEscaner();
+
         }, 1800);
+
 
         return;
       }
 
 
-      clienteActual = data.cliente;
+      /*
+       * IMPORTANTE:
+       * Apps Script devuelve los datos
+       * dentro de data.resultado.
+       */
+
+      const cliente =
+        data.resultado;
 
 
-      document.getElementById("memberName")
+      if (!cliente) {
+
+        throw new Error(
+          "El servidor no devolvió los datos de la membresía."
+        );
+
+      }
+
+
+      clienteActual =
+        cliente;
+
+
+      document
+        .getElementById("memberName")
         .textContent =
-        clienteActual.nombre;
+        cliente.nombre;
 
-      document.getElementById("memberID")
+
+      document
+        .getElementById("memberID")
         .textContent =
-        clienteActual.id;
+        cliente.id;
 
-      document.getElementById("memberVisits")
+
+      document
+        .getElementById("memberVisits")
         .textContent =
-        clienteActual.visitas;
+        cliente.visitas;
 
 
-      document.getElementById("memberBox")
-        .classList.remove("hidden");
+      document
+        .getElementById("memberBox")
+        .classList
+        .remove("hidden");
 
 
-      document.getElementById("scannerMessage")
+      document
+        .getElementById("scannerMessage")
         .textContent =
         "Membresía identificada. Confirma la visita.";
 
-      document.getElementById("scannerMessage")
+
+      document
+        .getElementById("scannerMessage")
         .className =
         "message success";
 
     })
+
     .catch(error => {
 
       console.error(error);
 
-      document.getElementById("scannerMessage")
-        .textContent =
+
+      const message =
+        document.getElementById(
+          "scannerMessage"
+        );
+
+
+      message.textContent =
+        error.message ||
         "Error al consultar la membresía.";
 
-      document.getElementById("scannerMessage")
-        .className =
+      message.className =
         "message error";
 
     });
 
   }
 
+
+  /* =====================================================
+     CONFIRMAR VISITA
+     ===================================================== */
 
   function confirmarVisita() {
 
@@ -599,7 +747,16 @@
 
 
     const message =
-      document.getElementById("scannerMessage");
+      document.getElementById(
+        "scannerMessage"
+      );
+
+
+    const confirmButton =
+      document.querySelector(".confirm");
+
+
+    confirmButton.disabled = true;
 
 
     message.textContent =
@@ -610,23 +767,43 @@
 
 
     fetch(API_URL, {
+
       method: "POST",
+
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type":
+          "text/plain;charset=utf-8"
       },
+
       body: JSON.stringify({
+
         accion: "staff_registrar",
+
         codigo: staffCode,
+
         memberID: clienteActual.id
+
       })
+
     })
+
     .then(response => response.json())
+
     .then(data => {
+
+      console.log(
+        "Respuesta registro:",
+        data
+      );
+
 
       if (!data.ok) {
 
+        confirmButton.disabled = false;
+
+
         message.textContent =
-          data.mensaje ||
+          data.error ||
           "No se pudo registrar la visita.";
 
         message.className =
@@ -636,50 +813,105 @@
       }
 
 
-      document.getElementById("memberVisits")
-        .textContent =
-        data.visitas;
-
-
-      message.textContent =
-        data.mensaje ||
-        "Visita registrada correctamente.";
-
-      message.className =
-        "message success";
+      const resultado =
+        data.resultado;
 
 
       /*
-       * Después de registrar, bloqueamos temporalmente
-       * el botón para evitar doble registro accidental.
+       * VISITA YA REGISTRADA HOY
        */
-      const confirmButton =
-        document.querySelector(".confirm");
 
-      confirmButton.disabled = true;
-      confirmButton.style.opacity = "0.5";
+      if (
+        resultado.estado ===
+        "ya_registrado"
+      ) {
+
+        message.textContent =
+          "Esta visita ya fue registrada hoy.";
+
+        message.className =
+          "message error";
+
+
+        confirmButton.disabled = false;
+
+        return;
+      }
+
+
+      /*
+       * CORTE GRATIS
+       */
+
+      if (
+        resultado.estado ===
+        "corte_gratis"
+      ) {
+
+        document
+          .getElementById("memberVisits")
+          .textContent = "0";
+
+
+        message.textContent =
+          "🎉 ¡Visita #10! Corte gratis desbloqueado.";
+
+        message.className =
+          "message success";
+
+      }
+
+      /*
+       * VISITA NORMAL
+       */
+
+      else {
+
+        document
+          .getElementById("memberVisits")
+          .textContent =
+          resultado.visitas;
+
+
+        message.textContent =
+          "✓ Visita registrada correctamente.";
+
+        message.className =
+          "message success";
+
+      }
 
 
       setTimeout(() => {
 
         clienteActual = null;
 
-        document.getElementById("memberBox")
-          .classList.add("hidden");
+
+        document
+          .getElementById("memberBox")
+          .classList
+          .add("hidden");
+
 
         confirmButton.disabled = false;
-        confirmButton.style.opacity = "1";
+
 
         reiniciarEscaner();
 
       }, 2200);
 
     })
+
     .catch(error => {
 
       console.error(error);
 
+
+      confirmButton.disabled = false;
+
+
       message.textContent =
+        error.message ||
         "No se pudo conectar con el servidor.";
 
       message.className =
@@ -690,86 +922,98 @@
   }
 
 
+  /* =====================================================
+     ESCANEAR OTRO
+     ===================================================== */
+
   function reiniciarEscaner() {
 
     clienteActual = null;
 
 
-    document.getElementById("memberBox")
-      .classList.add("hidden");
+    document
+      .getElementById("memberBox")
+      .classList
+      .add("hidden");
 
 
-    document.getElementById("scannerMessage")
+    document
+      .getElementById("scannerMessage")
       .textContent =
       "Apunta la cámara al Member QR.";
 
-    document.getElementById("scannerMessage")
+
+    document
+      .getElementById("scannerMessage")
       .className =
       "message";
 
 
     if (!scannerActivo) {
+
       iniciarEscaner();
+
     }
 
   }
 
+
+  /* =====================================================
+     CERRAR SESIÓN
+     ===================================================== */
 
   function cerrarSesion() {
 
     detenerEscaner();
 
+
     staffCode = "";
     clienteActual = null;
+
 
     sessionStorage.removeItem(
       "tcs_staff_authorized"
     );
 
-    document.getElementById("staffCard")
-      .classList.add("hidden");
 
-    document.getElementById("loginCard")
-      .classList.remove("hidden");
+    document
+      .getElementById("staffCard")
+      .classList
+      .add("hidden");
 
-    document.getElementById("codigo")
+
+    document
+      .getElementById("loginCard")
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById("codigo")
       .value = "";
 
-    document.getElementById("loginMessage")
+
+    document
+      .getElementById("loginMessage")
       .textContent = "";
 
   }
 
 
-  /*
-   * Si ya existe una sesión en esta pestaña,
-   * mostramos el panel.
-   *
-   * El código se mantiene únicamente en memoria,
-   * por lo que si se recarga la página deberá
-   * volver a introducirse.
-   */
-  window.addEventListener("load", () => {
+  /* =====================================================
+     CARGA INICIAL
+     ===================================================== */
 
-    const autorizado =
-      sessionStorage.getItem(
-        "tcs_staff_authorized"
-      );
+  window.addEventListener(
+    "load",
+    () => {
 
-    if (autorizado === "true") {
-
-      /*
-       * No reutilizamos una contraseña almacenada.
-       * Para mantener la seguridad, pedimos login
-       * nuevamente si se recarga la página.
-       */
       sessionStorage.removeItem(
         "tcs_staff_authorized"
       );
 
     }
-
-  });
+  );
 
 </script>
 
