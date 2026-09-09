@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#080808">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style"
@@ -26,7 +26,7 @@
     }
 
     html {
-      background: #050505;
+      background: #080808;
     }
 
     body {
@@ -42,11 +42,10 @@
 
       background:
         radial-gradient(
-          circle at 50% -12%,
-          #363636 0%,
-          #181818 30%,
-          #0b0b0b 62%,
-          #050505 100%
+          circle at 50% -10%,
+          #303030 0%,
+          #151515 35%,
+          #080808 75%
         );
 
       color: white;
@@ -69,22 +68,17 @@
 
       position: fixed;
 
-      width: 360px;
-      height: 360px;
+      width: 300px;
+      height: 300px;
 
-      top: -190px;
+      top: -170px;
       left: 50%;
 
       transform: translateX(-50%);
 
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,.09),
-          rgba(255,255,255,0) 70%
-        );
+      background: rgba(255,255,255,.055);
 
-      filter: blur(30px);
+      filter: blur(70px);
 
       pointer-events: none;
     }
@@ -102,13 +96,12 @@
       background:
         linear-gradient(
           145deg,
-          #292929 0%,
-          #171717 27%,
-          #101010 58%,
-          #080808 100%
+          #252525 0%,
+          #151515 45%,
+          #0e0e0e 100%
         );
 
-      border: 1px solid #454545;
+      border: 1px solid #3b3b3b;
 
       border-radius: 30px;
 
@@ -117,140 +110,48 @@
       text-align: center;
 
       box-shadow:
-        0 35px 100px rgba(0,0,0,.82),
-        inset 0 1px 0 rgba(255,255,255,.07);
+        0 30px 90px rgba(0,0,0,.75);
 
       overflow: hidden;
     }
 
-    .card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 220px;
-      height: 220px;
-
-      top: -150px;
-      right: -80px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,.13),
-          rgba(255,255,255,0) 70%
-        );
-
-      filter: blur(15px);
-
-      pointer-events: none;
-    }
-
-    .card::after {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-      top: 0;
-
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,.35),
-          transparent
-        );
-
-      pointer-events: none;
-    }
-
     .brand {
-      position: relative;
-      z-index: 1;
-
-      font-size: 9px;
+      font-size: 10px;
       letter-spacing: 5px;
-
-      color: #a7a7a7;
-
-      margin-bottom: 11px;
+      color: #aaa;
+      margin-bottom: 12px;
     }
 
     .title {
-      position: relative;
-      z-index: 1;
-
       font-family: Georgia, serif;
-
-      font-size: 35px;
-
-      letter-spacing: 3px;
-
+      font-size: 34px;
+      letter-spacing: 2px;
       margin-bottom: 5px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #d4d4d4 48%,
-          #777777 100%
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
     }
 
     .subtitle {
-      position: relative;
-      z-index: 1;
-
-      color: #727272;
-
-      font-size: 10px;
-
-      letter-spacing: 3px;
-
-      margin-bottom: 27px;
+      color: #777;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
     }
 
     .badge {
-      position: relative;
-      z-index: 1;
-
       display: inline-flex;
-
       align-items: center;
       justify-content: center;
 
-      padding: 7px 13px;
+      padding: 7px 12px;
 
-      border: 1px solid #4a4a4a;
-
+      border: 1px solid #393939;
       border-radius: 50px;
 
-      color: #a0a0a0;
+      color: #888;
 
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.015)
-        );
+      font-size: 9px;
+      letter-spacing: 2px;
 
-      font-size: 8px;
-
-      letter-spacing: 2.5px;
-
-      margin-bottom: 19px;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.05);
+      margin-bottom: 18px;
     }
 
     .menu {
@@ -260,40 +161,26 @@
 
     button {
       width: 100%;
-
       min-height: 54px;
 
       padding: 15px;
 
       border: none;
-
       border-radius: 15px;
 
-      background:
-        linear-gradient(
-          180deg,
-          #f7f7f7 0%,
-          #cfcfcf 100%
-        );
-
+      background: #f4f4f4;
       color: #101010;
 
-      font-size: 11px;
-
+      font-size: 12px;
       font-weight: 700;
 
-      letter-spacing: 1.5px;
+      letter-spacing: 1.3px;
 
       cursor: pointer;
 
       transition:
         transform .15s ease,
-        opacity .15s ease,
-        box-shadow .15s ease;
-
-      box-shadow:
-        0 5px 18px rgba(0,0,0,.28),
-        inset 0 1px 0 rgba(255,255,255,.8);
+        opacity .15s ease;
     }
 
     button:active {
@@ -305,35 +192,15 @@
     }
 
     .secondary {
-      background:
-        linear-gradient(
-          145deg,
-          #1b1b1b,
-          #101010
-        );
-
-      color: #eeeeee;
-
-      border: 1px solid #484848;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06);
+      background: transparent;
+      color: white;
+      border: 1px solid #414141;
     }
 
     .dark-button {
-      background:
-        linear-gradient(
-          145deg,
-          #151515,
-          #0b0b0b
-        );
-
-      color: #bdbdbd;
-
-      border: 1px solid #363636;
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.04);
+      background: #191919;
+      color: #ddd;
+      border: 1px solid #383838;
     }
 
     input {
@@ -343,14 +210,9 @@
 
       border-radius: 15px;
 
-      border: 1px solid #414141;
+      border: 1px solid #3d3d3d;
 
-      background:
-        linear-gradient(
-          145deg,
-          #111111,
-          #080808
-        );
+      background: #0d0d0d;
 
       color: white;
 
@@ -363,107 +225,40 @@
       text-align: center;
 
       -webkit-appearance: none;
-
-      box-shadow:
-        inset 0 2px 8px rgba(0,0,0,.4);
-    }
-
-    input::placeholder {
-      color: #626262;
     }
 
     input:focus {
-      border-color: #777777;
-
-      box-shadow:
-        0 0 0 1px #555555,
-        inset 0 2px 8px rgba(0,0,0,.4);
+      border-color: #777;
     }
 
     .hidden {
       display: none !important;
     }
 
-    /*
-     * =====================================================
-     * CLUB CARD PREMIUM
-     * =====================================================
-     */
-
     .member {
-      position: relative;
-
       margin-top: 20px;
 
-      border: 1px solid #4a4a4a;
+      border: 1px solid #414141;
 
-      border-radius: 24px;
+      border-radius: 22px;
 
-      padding: 25px 19px 22px;
+      padding: 25px 19px;
 
       background:
         linear-gradient(
           145deg,
-          #242424 0%,
-          #151515 42%,
-          #0a0a0a 100%
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.012)
         );
 
       animation: appear .35s ease;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 18px 45px rgba(0,0,0,.55),
-        inset 0 1px 0 rgba(255,255,255,.07);
-    }
-
-    .member::before {
-      content: "";
-
-      position: absolute;
-
-      width: 180px;
-      height: 180px;
-
-      top: -115px;
-      right: -65px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,.12),
-          rgba(255,255,255,0) 70%
-        );
-
-      filter: blur(12px);
-    }
-
-    .member::after {
-      content: "";
-
-      position: absolute;
-
-      left: 15px;
-      right: 15px;
-      top: 0;
-
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,.4),
-          transparent
-        );
     }
 
     @keyframes appear {
 
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
       }
 
       to {
@@ -473,171 +268,42 @@
 
     }
 
-    .member-top {
-      position: relative;
-      z-index: 1;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin-bottom: 22px;
-
-      text-align: left;
-    }
-
     .member-label {
-      font-size: 8px;
-
+      font-size: 9px;
       letter-spacing: 3px;
-
-      color: #777777;
-    }
-
-    .member-status {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      font-size: 7px;
-
-      letter-spacing: 2px;
-
-      color: #9b9b9b;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: #d5d5d5;
-
-      box-shadow:
-        0 0 8px rgba(255,255,255,.55);
-    }
-
-    .member-name-box {
-      position: relative;
-      z-index: 1;
-
-      text-align: left;
-
-      padding-bottom: 18px;
-
-      border-bottom: 1px solid #303030;
-    }
-
-    .member-name-caption {
-      font-size: 7px;
-
-      letter-spacing: 2.5px;
-
-      color: #686868;
-
-      margin-bottom: 6px;
+      color: #777;
+      margin-bottom: 8px;
     }
 
     .nombre {
       font-family: Georgia, serif;
-
-      font-size: 28px;
-
-      letter-spacing: .5px;
-
-      color: #eeeeee;
-
-      margin-bottom: 0;
-    }
-
-    .member-chip {
-      position: relative;
-      z-index: 1;
-
-      margin-top: 16px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      color: #777777;
-
-      font-size: 7px;
-
-      letter-spacing: 2px;
-    }
-
-    .member-chip span:last-child {
-      color: #a3a3a3;
-    }
-
-    .visitas-area {
-      position: relative;
-      z-index: 1;
-
-      margin-top: 22px;
-
-      text-align: center;
+      font-size: 27px;
+      margin-bottom: 25px;
     }
 
     .visitas {
-      font-size: 48px;
-
-      line-height: 1;
-
+      font-size: 50px;
       font-weight: 600;
-
-      letter-spacing: -2px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #ffffff,
-          #9d9d9d
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
+      letter-spacing: -1px;
     }
 
     .visitas-label {
-      font-size: 8px;
-
+      font-size: 9px;
       letter-spacing: 3px;
-
-      color: #6e6e6e;
-
-      margin-top: 8px;
-
-      margin-bottom: 18px;
+      color: #777;
+      margin-bottom: 20px;
     }
 
     .barra {
-      position: relative;
-
       width: 100%;
+      height: 7px;
 
-      height: 6px;
-
-      background: #292929;
+      background: #303030;
 
       border-radius: 20px;
-
       overflow: hidden;
 
-      margin-bottom: 9px;
-
-      box-shadow:
-        inset 0 1px 3px rgba(0,0,0,.8);
+      margin-bottom: 23px;
     }
 
     .progreso {
@@ -646,88 +312,49 @@
       background:
         linear-gradient(
           90deg,
-          #686868,
-          #dcdcdc,
-          #ffffff
+          #777,
+          #fff
         );
 
       border-radius: 20px;
 
       transition: width .7s ease;
-
-      box-shadow:
-        0 0 9px rgba(255,255,255,.25);
-    }
-
-    .progress-text {
-      text-align: right;
-
-      font-size: 7px;
-
-      color: #707070;
-
-      letter-spacing: 1.5px;
-
-      margin-bottom: 20px;
     }
 
     .beneficio {
-      position: relative;
-      z-index: 1;
+      border-top: 1px solid #333;
 
-      border-top: 1px solid #303030;
-
-      padding-top: 18px;
-
-      margin-top: 4px;
+      padding-top: 19px;
+      margin-top: 5px;
     }
 
     .beneficio-label {
-      font-size: 7px;
-
+      font-size: 8px;
       letter-spacing: 3px;
-
-      color: #686868;
-
-      margin-bottom: 8px;
+      color: #777;
+      margin-bottom: 9px;
     }
 
     .beneficio-texto {
-      font-size: 13px;
-
-      line-height: 1.55;
-
-      color: #cfcfcf;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #ddd;
     }
 
     .unlocked {
-      position: relative;
-      z-index: 1;
-
-      margin-top: 17px;
+      margin-top: 18px;
 
       padding: 14px;
 
-      border: 1px solid #666666;
+      border: 1px solid #555;
 
       border-radius: 13px;
 
-      font-size: 9px;
+      font-size: 11px;
 
-      letter-spacing: 2px;
+      letter-spacing: 1px;
 
-      color: #ededed;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.08),
-          rgba(255,255,255,.025)
-        );
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 7px 20px rgba(0,0,0,.25);
+      background: rgba(255,255,255,.025);
     }
 
     .success {
@@ -775,9 +402,9 @@
     .footer {
       margin-top: 23px;
 
-      color: #505050;
+      color: #5f5f5f;
 
-      font-size: 8px;
+      font-size: 9px;
 
       letter-spacing: 3px;
     }
@@ -789,32 +416,20 @@
 
       border-radius: 18px;
 
-      border: 1px solid #3d3d3d;
+      border: 1px solid #3b3b3b;
 
-      background:
-        linear-gradient(
-          145deg,
-          #151515,
-          #0b0b0b
-        );
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.04);
+      background: #111;
     }
 
     .install-title {
-      font-size: 10px;
-
-      letter-spacing: 2.5px;
-
+      font-size: 11px;
+      letter-spacing: 2px;
       margin-bottom: 13px;
     }
 
     .install-text {
-      color: #999999;
-
+      color: #999;
       font-size: 12px;
-
       line-height: 1.6;
     }
 
@@ -824,8 +439,7 @@
       width: 28px;
       height: 28px;
 
-      border: 2px solid #333333;
-
+      border: 2px solid #333;
       border-top-color: white;
 
       border-radius: 50%;
@@ -834,16 +448,13 @@
     }
 
     @keyframes spin {
-
       to {
         transform: rotate(360deg);
       }
-
     }
 
     #splash {
       position: fixed;
-
       inset: 0;
 
       z-index: 9999;
@@ -851,7 +462,7 @@
       background:
         radial-gradient(
           circle at center,
-          #292929 0%,
+          #262626 0%,
           #101010 45%,
           #050505 100%
         );
@@ -859,7 +470,6 @@
       display: flex;
 
       align-items: center;
-
       justify-content: center;
 
       text-align: center;
@@ -871,9 +481,7 @@
 
     #splash.hide {
       opacity: 0;
-
       visibility: hidden;
-
       pointer-events: none;
     }
 
@@ -885,22 +493,10 @@
       letter-spacing: 6px;
 
       margin-bottom: 12px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #ffffff,
-          #858585
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
     }
 
     .splash-name {
-      color: #777777;
+      color: #777;
 
       font-size: 9px;
 
@@ -961,17 +557,13 @@
           <button
             class="secondary"
             onclick="mostrarConsulta()">
-
             MI CLUB CARD
-
           </button>
 
           <button
             class="dark-button"
             onclick="mostrarInstalacion()">
-
             ＋ AÑADIR TCS CARD
-
           </button>
 
         </div>
@@ -1220,7 +812,7 @@
 
     /*
      * =====================================================
-     * CONEXIÓN CON APPS SCRIPT
+     * LLAMADA AL APPS SCRIPT
      * =====================================================
      */
 
@@ -1240,7 +832,6 @@
         }
       );
 
-
       if (!respuesta.ok) {
 
         throw new Error(
@@ -1249,18 +840,14 @@
 
       }
 
-
       const texto =
         await respuesta.text();
 
-
       let resultado;
-
 
       try {
 
-        resultado =
-          JSON.parse(texto);
+        resultado = JSON.parse(texto);
 
       } catch (error) {
 
@@ -1270,7 +857,6 @@
 
       }
 
-
       if (!resultado.ok) {
 
         throw new Error(
@@ -1279,7 +865,6 @@
         );
 
       }
-
 
       return resultado.resultado;
 
@@ -1299,7 +884,6 @@
           .getElementById("nombre")
           .value
           .trim();
-
 
       const whatsapp =
         document
@@ -1487,7 +1071,7 @@
 
     /*
      * =====================================================
-     * RESULTADO REGISTRO
+     * MOSTRAR RESULTADO DE REGISTRO
      * =====================================================
      */
 
@@ -1517,23 +1101,8 @@
 
           '<div class="member">' +
 
-          '<div class="member-top">' +
-
           '<div class="member-label">' +
-          'TCS MEMBER' +
-          '</div>' +
-
-          '<div class="member-status">' +
-          '<span class="status-dot"></span>' +
-          'ACTIVE MEMBER' +
-          '</div>' +
-
-          '</div>' +
-
-          '<div class="member-name-box">' +
-
-          '<div class="member-name-caption">' +
-          'MEMBER NAME' +
+          'THE CLUB STUDIO' +
           '</div>' +
 
           '<div class="nombre">' +
@@ -1543,17 +1112,8 @@
           ) +
           '</div>' +
 
-          '</div>' +
-
-          '<div class="member-chip">' +
-          '<span>THE CLUB STUDIO</span>' +
-          '<span>MEMBER EXPERIENCE</span>' +
-          '</div>' +
-
-          '<div class="visitas-area">' +
-
           '<div class="visitas">' +
-          '10 / 10' +
+          '10' +
           '</div>' +
 
           '<div class="visitas-label">' +
@@ -1565,14 +1125,8 @@
           'style="width:100%"></div>' +
           '</div>' +
 
-          '<div class="progress-text">' +
-          '100% COMPLETE' +
-          '</div>' +
-
-          '</div>' +
-
           '<div class="unlocked">' +
-          '✦ BENEFIT UNLOCKED ✦' +
+          '✦ BENEFICIO DESBLOQUEADO ✦' +
           '</div>' +
 
           '<div class="beneficio">' +
@@ -1583,7 +1137,8 @@
 
           '<div class="beneficio-texto">' +
           'Has completado tus 10 visitas. ' +
-          'Tu beneficio exclusivo está listo.' +
+          'Tu próxima visita corresponde a tu ' +
+          'beneficio gratuito.' +
           '</div>' +
 
           '</div>' +
@@ -1620,7 +1175,7 @@
 
     /*
      * =====================================================
-     * RESULTADO CONSULTA
+     * MOSTRAR RESULTADO DE CONSULTA
      * =====================================================
      */
 
@@ -1649,7 +1204,7 @@
 
     /*
      * =====================================================
-     * TARJETA PREMIUM
+     * MOSTRAR TARJETA
      * =====================================================
      */
 
@@ -1674,7 +1229,6 @@
       if (visitas < 0) {
         visitas = 0;
       }
-
 
       if (visitas > 10) {
         visitas = 10;
@@ -1701,7 +1255,7 @@
       } else {
 
         mensaje =
-          "Tu membresía continúa avanzando.";
+          "Visita registrada correctamente.";
 
       }
 
@@ -1712,37 +1266,13 @@
 
         '<div class="member">' +
 
-        '<div class="member-top">' +
-
         '<div class="member-label">' +
-        'TCS MEMBER' +
-        '</div>' +
-
-        '<div class="member-status">' +
-        '<span class="status-dot"></span>' +
-        'ACTIVE MEMBER' +
-        '</div>' +
-
-        '</div>' +
-
-        '<div class="member-name-box">' +
-
-        '<div class="member-name-caption">' +
-        'MEMBER NAME' +
+        'MEMBER' +
         '</div>' +
 
         '<div class="nombre">' +
         nombre +
         '</div>' +
-
-        '</div>' +
-
-        '<div class="member-chip">' +
-        '<span>THE CLUB STUDIO</span>' +
-        '<span>MEMBER EXPERIENCE</span>' +
-        '</div>' +
-
-        '<div class="visitas-area">' +
 
         '<div class="visitas">' +
         visitas +
@@ -1750,7 +1280,7 @@
         '</div>' +
 
         '<div class="visitas-label">' +
-        'VISITAS COMPLETADAS' +
+        'VISITAS' +
         '</div>' +
 
         '<div class="barra">' +
@@ -1759,13 +1289,6 @@
         'style="width:' +
         porcentaje +
         '%"></div>' +
-
-        '</div>' +
-
-        '<div class="progress-text">' +
-        Math.round(porcentaje) +
-        '% COMPLETE' +
-        '</div>' +
 
         '</div>' +
 
@@ -1790,7 +1313,7 @@
 
     /*
      * =====================================================
-     * LOADING
+     * CARGANDO
      * =====================================================
      */
 
@@ -1926,7 +1449,7 @@
 
     /*
      * =====================================================
-     * SPLASH
+     * SPLASH SCREEN
      * =====================================================
      */
 
