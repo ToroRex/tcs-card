@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <meta name="theme-color" content="#080808">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent">
+  <meta name="apple-mobile-web-app-title"
+        content="TCS Card">
+
+  <title>TCS Card — The Club Studio</title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      background: #080808;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          #303030 0%,
+          #151515 35%,
+          #080808 75%
+        );
+
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        max(18px, env(safe-area-inset-top))
+        18px
+        max(18px, env(safe-area-inset-bottom))
+        18px;
+
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      width: 300px;
+      height: 300px;
+
+      top: -170px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      background: rgba(255,255,255,.055);
+
+      filter: blur(70px);
+
+      pointer-events: none;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .card {
+      position: relative;
+
+      width: 100%;
+
+      background:
+        linear-gradient(
+          145deg,
+          #252525 0%,
+          #151515 45%,
+          #0e0e0e 100%
+        );
+
+      border: 1px solid #3b3b3b;
+
+      border-radius: 30px;
+
+      padding: 30px 22px 24px;
+
+      text-align: center;
+
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.75);
+
+      overflow: hidden;
+    }
+
+    .brand {
+      font-size: 10px;
+      letter-spacing: 5px;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 7px 12px;
+
+      border: 1px solid #393939;
+      border-radius: 50px;
+
+      color: #888;
+
+      font-size: 9px;
+      letter-spacing: 2px;
+
+      margin-bottom: 18px;
+    }
+
+    .menu {
+      display: grid;
+      gap: 11px;
+    }
+
+    button {
+      width: 100%;
+      min-height: 54px;
+
+      padding: 15px;
+
+      border: none;
+      border-radius: 15px;
+
+      background: #f4f4f4;
+      color: #101010;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: 1.3px;
+
+      cursor: pointer;
+
+      transition:
+        transform .15s ease,
+        opacity .15s ease;
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    button:disabled {
+      opacity: .55;
+    }
+
+    .secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid #414141;
+    }
+
+    .dark-button {
+      background: #191919;
+      color: #ddd;
+      border: 1px solid #383838;
+    }
+
+    input {
+      width: 100%;
+
+      padding: 17px 15px;
+
+      border-radius: 15px;
+
+      border: 1px solid #3d3d3d;
+
+      background: #0d0d0d;
+
+      color: white;
+
+      font-size: 16px;
+
+      outline: none;
+
+      margin-bottom: 11px;
+
+      text-align: center;
+
+      -webkit-appearance: none;
+    }
+
+    input:focus {
+      border-color: #777;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .member {
+      margin-top: 20px;
+
+      border: 1px solid #414141;
+
+      border-radius: 22px;
+
+      padding: 25px 19px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.012)
+        );
+
+      animation: appear .35s ease;
+    }
+
+    @keyframes appear {
+
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    .member-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .nombre {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      margin-bottom: 25px;
+    }
+
+    .visitas {
+      font-size: 50px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+
+    .visitas-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .barra {
+      width: 100%;
+      height: 7px;
+
+      background: #303030;
+
+      border-radius: 20px;
+      overflow: hidden;
+
+      margin-bottom: 23px;
+    }
+
+    .progreso {
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          #777,
+          #fff
+        );
+
+      border-radius: 20px;
+
+      transition: width .7s ease;
+    }
+
+    .beneficio {
+      border-top: 1px solid #333;
+
+      padding-top: 19px;
+      margin-top: 5px;
+    }
+
+    .beneficio-label {
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #777;
+      margin-bottom: 9px;
+    }
+
+    .beneficio-texto {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
+    .unlocked {
+      margin-top: 18px;
+
+      padding: 14px;
+
+      border: 1px solid #555;
+
+      border-radius: 13px;
+
+      font-size: 11px;
+
+      letter-spacing: 1px;
+
+      background: rgba(255,255,255,.025);
+    }
+
+    .success {
+      margin-top: 20px;
+
+      color: #cfcfcf;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+    .error {
+      margin-top: 18px;
+
+      color: #d99090;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+    .back {
+      margin-top: 10px;
+    }
+
+    .actions {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 9px;
+
+      margin-top: 16px;
+    }
+
+    .actions button {
+      min-height: 48px;
+
+      font-size: 10px;
+
+      padding: 12px 8px;
+    }
+
+    .footer {
+      margin-top: 23px;
+
+      color: #5f5f5f;
+
+      font-size: 9px;
+
+      letter-spacing: 3px;
+    }
+
+    .install-box {
+      margin-top: 18px;
+
+      padding: 18px;
+
+      border-radius: 18px;
+
+      border: 1px solid #3b3b3b;
+
+      background: #111;
+    }
+
+    .install-title {
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 13px;
+    }
+
+    .install-text {
+      color: #999;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .loader {
+      margin: 22px auto;
+
+      width: 28px;
+      height: 28px;
+
+      border: 2px solid #333;
+      border-top-color: white;
+
+      border-radius: 50%;
+
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #splash {
+      position: fixed;
+      inset: 0;
+
+      z-index: 9999;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #262626 0%,
+          #101010 45%,
+          #050505 100%
+        );
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      transition:
+        opacity .5s ease,
+        visibility .5s ease;
+    }
+
+    #splash.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-logo {
+      font-family: Georgia, serif;
+
+      font-size: 45px;
+
+      letter-spacing: 6px;
+
+      margin-bottom: 12px;
+    }
+
+    .splash-name {
+      color: #777;
+
+      font-size: 9px;
+
+      letter-spacing: 5px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="splash">
+
+    <div>
+
+      <div class="splash-logo">
+        TCS
+      </div>
+
+      <div class="splash-name">
+        THE CLUB STUDIO
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="app">
+
+    <div class="card">
+
+      <div class="brand">
+        THE CLUB STUDIO
+      </div>
+
+      <div class="title">
+        TCS CARD
+      </div>
+
+      <div class="subtitle">
+        MEMBER EXPERIENCE
+      </div>
+
+      <div class="badge">
+        DIGITAL MEMBERSHIP
+      </div>
+
+
+      <div id="inicio">
+
+        <div class="menu">
+
+          <button onclick="mostrarRegistro()">
+            REGISTRAR VISITA
+          </button>
+
+          <button
+            class="secondary"
+            onclick="mostrarConsulta()">
+            MI CLUB CARD
+          </button>
+
+          <button
+            class="dark-button"
+            onclick="mostrarInstalacion()">
+            ＋ AÑADIR TCS CARD
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="registro" class="hidden">
+
+        <input
+          id="nombre"
+          type="text"
+          autocomplete="name"
+          placeholder="Tu nombre">
+
+        <input
+          id="whatsapp"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          placeholder="Tu WhatsApp">
+
+        <button
+          id="btnRegistro"
+          onclick="registrarVisita()">
+
+          CONTINUAR
+
+        </button>
+
+        <div class="back">
+
+          <button
+            class="secondary"
+            onclick="volverInicio()">
+
+            VOLVER
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="consulta" class="hidden">
+
+        <input
+          id="whatsappConsulta"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          placeholder="Tu WhatsApp">
+
+        <button
+          id="btnConsulta"
+          onclick="consultarCard()">
+
+          CONSULTAR MI CLUB CARD
+
+        </button>
+
+        <div class="back">
+
+          <button
+            class="secondary"
+            onclick="volverInicio()">
+
+            VOLVER
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="instalacion" class="hidden">
+
+        <div class="install-box">
+
+          <div class="install-title">
+            TCS CARD
+          </div>
+
+          <div class="install-text">
+
+            <strong>iPhone</strong><br><br>
+
+            Abre esta página en Safari,
+            toca <strong>Compartir</strong>
+            y después selecciona
+            <strong>“Añadir a pantalla de inicio”</strong>.
+
+            <br><br>
+
+            <strong>Android</strong><br><br>
+
+            Abre esta página en Chrome,
+            toca los <strong>tres puntos ⋮</strong>
+            y selecciona
+            <strong>“Instalar aplicación”</strong>
+            o <strong>“Añadir a pantalla de inicio”</strong>.
+
+          </div>
+
+        </div>
+
+        <div class="back">
+
+          <button
+            class="secondary"
+            onclick="volverInicio()">
+
+            VOLVER
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="resultado"></div>
+
+
+      <div class="footer">
+        MEMBER OF THE CLUB
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /*
+     * =====================================================
+     * CONEXIÓN CON TU APPS SCRIPT
+     * =====================================================
+     */
+
+    const APPS_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
+
+
+    const STORAGE_KEY =
+      "tcs_card_whatsapp";
+
+
+    function ocultarTodo() {
+
+      document
+        .getElementById("inicio")
+        .classList.add("hidden");
+
+      document
+        .getElementById("registro")
+        .classList.add("hidden");
+
+      document
+        .getElementById("consulta")
+        .classList.add("hidden");
+
+      document
+        .getElementById("instalacion")
+        .classList.add("hidden");
+
+      document
+        .getElementById("resultado")
+        .innerHTML = "";
+
+    }
+
+
+    function volverInicio() {
+
+      ocultarTodo();
+
+      document
+        .getElementById("inicio")
+        .classList.remove("hidden");
+
+    }
+
+
+    function mostrarRegistro() {
+
+      ocultarTodo();
+
+      document
+        .getElementById("registro")
+        .classList.remove("hidden");
+
+      const guardado =
+        localStorage.getItem(
+          STORAGE_KEY
+        );
+
+      if (guardado) {
+
+        document
+          .getElementById("whatsapp")
+          .value = guardado;
+
+      }
+
+    }
+
+
+    function mostrarConsulta() {
+
+      ocultarTodo();
+
+      document
+        .getElementById("consulta")
+        .classList.remove("hidden");
+
+      const guardado =
+        localStorage.getItem(
+          STORAGE_KEY
+        );
+
+      if (guardado) {
+
+        document
+          .getElementById("whatsappConsulta")
+          .value = guardado;
+
+      }
+
+    }
+
+
+    function mostrarInstalacion() {
+
+      ocultarTodo();
+
+      document
+        .getElementById("instalacion")
+        .classList.remove("hidden");
+
+    }
+
+
+    async function registrarVisita() {
+
+      const nombre =
+        document
+          .getElementById("nombre")
+          .value
+          .trim();
+
+      const whatsapp =
+        document
+          .getElementById("whatsapp")
+          .value
+          .trim();
+
+
+      if (!nombre || !whatsapp) {
+
+        mostrarError(
+          "Completa tu nombre y WhatsApp."
+        );
+
+        return;
+
+      }
+
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        whatsapp.replace(/\D/g, "")
+      );
+
+
+      mostrarCargando(
+        "Registrando tu visita..."
+      );
+
+
+      mostrarError(
+        "La conexión con TCS Card se activará en el siguiente paso."
+      );
+
+    }
+
+
+    async function consultarCard() {
+
+      const whatsapp =
+        document
+          .getElementById(
+            "whatsappConsulta"
+          )
+          .value
+          .trim();
+
+
+      if (!whatsapp) {
+
+        mostrarError(
+          "Ingresa tu número de WhatsApp."
+        );
+
+        return;
+
+      }
+
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        whatsapp.replace(/\D/g, "")
+      );
+
+
+      mostrarCargando(
+        "Consultando tu Club Card..."
+      );
+
+
+      mostrarError(
+        "La conexión con TCS Card se activará en el siguiente paso."
+      );
+
+    }
+
+
+    function mostrarCargando(texto) {
+
+      document
+        .getElementById("resultado")
+        .innerHTML =
+
+        '<div class="success">' +
+
+        '<div class="loader"></div>' +
+
+        texto +
+
+        '</div>';
+
+    }
+
+
+    function mostrarError(texto) {
+
+      document
+        .getElementById("resultado")
+        .innerHTML =
+
+        '<div class="error">' +
+
+        escaparHTML(texto) +
+
+        '</div>';
+
+    }
+
+
+    function escaparHTML(texto) {
+
+      return String(texto || "")
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    if (
+      "serviceWorker" in navigator
+    ) {
+
+      window.addEventListener(
+        "load",
+        function() {
+
+          navigator.serviceWorker
+            .register(
+              "service-worker.js"
+            )
+
+            .then(
+              function() {
+
+                console.log(
+                  "TCS Card Service Worker activo."
+                );
+
+              }
+            )
+
+            .catch(
+              function(error) {
+
+                console.log(
+                  "Service Worker:",
+                  error
+                );
+
+              }
+            );
+
+        }
+      );
+
+    }
+
+
+    window.addEventListener(
+      "load",
+      function() {
+
+        setTimeout(
+          function() {
+
+            document
+              .getElementById("splash")
+              .classList.add("hide");
+
+          },
+          1200
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
