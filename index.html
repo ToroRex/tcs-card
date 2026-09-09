@@ -810,6 +810,73 @@
     }
 
 
+    /*
+     * =====================================================
+     * LLAMADA AL APPS SCRIPT
+     * =====================================================
+     */
+
+    async function llamarAppsScript(datos) {
+
+      const respuesta = await fetch(
+        APPS_SCRIPT_URL,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "text/plain;charset=utf-8"
+          },
+
+          body: JSON.stringify(datos)
+        }
+      );
+
+      if (!respuesta.ok) {
+
+        throw new Error(
+          "No se pudo conectar con TCS Card."
+        );
+
+      }
+
+      const texto =
+        await respuesta.text();
+
+      let resultado;
+
+      try {
+
+        resultado = JSON.parse(texto);
+
+      } catch (error) {
+
+        throw new Error(
+          "El servidor respondió de forma inesperada."
+        );
+
+      }
+
+      if (!resultado.ok) {
+
+        throw new Error(
+          resultado.error ||
+          "Ocurrió un error en TCS Card."
+        );
+
+      }
+
+      return resultado.resultado;
+
+    }
+
+
+    /*
+     * =====================================================
+     * REGISTRAR VISITA
+     * =====================================================
+     */
+
     async function registrarVisita() {
 
       const nombre =
@@ -836,10 +903,34 @@
       }
 
 
+      const numero =
+        whatsapp.replace(/\D/g, "");
+
+
+      if (numero.length < 10) {
+
+        mostrarError(
+          "Ingresa un número de WhatsApp válido."
+        );
+
+        return;
+
+      }
+
+
       localStorage.setItem(
         STORAGE_KEY,
-        whatsapp.replace(/\D/g, "")
+        numero
       );
+
+
+      const boton =
+        document.getElementById(
+          "btnRegistro"
+        );
+
+
+      boton.disabled = true;
 
 
       mostrarCargando(
@@ -847,12 +938,46 @@
       );
 
 
-      mostrarError(
-        "La conexión con TCS Card se activará en el siguiente paso."
-      );
+      try {
+
+        const resultado =
+          await llamarAppsScript({
+
+            accion: "registrar",
+
+            nombre: nombre,
+
+            whatsapp: numero
+
+          });
+
+
+        mostrarResultadoVisita(
+          resultado
+        );
+
+
+      } catch (error) {
+
+        mostrarError(
+          error.message ||
+          "No fue posible registrar la visita."
+        );
+
+      } finally {
+
+        boton.disabled = false;
+
+      }
 
     }
 
+
+    /*
+     * =====================================================
+     * CONSULTAR CLUB CARD
+     * =====================================================
+     */
 
     async function consultarCard() {
 
@@ -876,10 +1001,34 @@
       }
 
 
+      const numero =
+        whatsapp.replace(/\D/g, "");
+
+
+      if (numero.length < 10) {
+
+        mostrarError(
+          "Ingresa un número de WhatsApp válido."
+        );
+
+        return;
+
+      }
+
+
       localStorage.setItem(
         STORAGE_KEY,
-        whatsapp.replace(/\D/g, "")
+        numero
       );
+
+
+      const boton =
+        document.getElementById(
+          "btnConsulta"
+        );
+
+
+      boton.disabled = true;
 
 
       mostrarCargando(
@@ -887,14 +1036,290 @@
       );
 
 
-      mostrarError(
-        "La conexión con TCS Card se activará en el siguiente paso."
+      try {
+
+        const resultado =
+          await llamarAppsScript({
+
+            accion: "buscar",
+
+            whatsapp: numero
+
+          });
+
+
+        mostrarResultadoConsulta(
+          resultado
+        );
+
+
+      } catch (error) {
+
+        mostrarError(
+          error.message ||
+          "No fue posible consultar tu Club Card."
+        );
+
+      } finally {
+
+        boton.disabled = false;
+
+      }
+
+    }
+
+
+    /*
+     * =====================================================
+     * MOSTRAR RESULTADO DE REGISTRO
+     * =====================================================
+     */
+
+    function mostrarResultadoVisita(
+      resultado
+    ) {
+
+      if (!resultado) {
+
+        mostrarError(
+          "No se recibió respuesta."
+        );
+
+        return;
+
+      }
+
+
+      if (
+        resultado.estado ===
+        "corte_gratis"
+      ) {
+
+        document
+          .getElementById("resultado")
+          .innerHTML =
+
+          '<div class="member">' +
+
+          '<div class="member-label">' +
+          'THE CLUB STUDIO' +
+          '</div>' +
+
+          '<div class="nombre">' +
+          escaparHTML(
+            resultado.nombre ||
+            "Miembro"
+          ) +
+          '</div>' +
+
+          '<div class="visitas">' +
+          '10' +
+          '</div>' +
+
+          '<div class="visitas-label">' +
+          'VISITAS COMPLETADAS' +
+          '</div>' +
+
+          '<div class="barra">' +
+          '<div class="progreso" ' +
+          'style="width:100%"></div>' +
+          '</div>' +
+
+          '<div class="unlocked">' +
+          '✦ BENEFICIO DESBLOQUEADO ✦' +
+          '</div>' +
+
+          '<div class="beneficio">' +
+
+          '<div class="beneficio-label">' +
+          'MEMBER BENEFIT' +
+          '</div>' +
+
+          '<div class="beneficio-texto">' +
+          'Has completado tus 10 visitas. ' +
+          'Tu próxima visita corresponde a tu ' +
+          'beneficio gratuito.' +
+          '</div>' +
+
+          '</div>' +
+
+          '</div>';
+
+        return;
+
+      }
+
+
+      if (
+        resultado.estado ===
+        "ya_registrada"
+      ) {
+
+        mostrarCard(
+          resultado,
+          true
+        );
+
+        return;
+
+      }
+
+
+      mostrarCard(
+        resultado,
+        false
       );
 
     }
 
 
-    function mostrarCargando(texto) {
+    /*
+     * =====================================================
+     * MOSTRAR RESULTADO DE CONSULTA
+     * =====================================================
+     */
+
+    function mostrarResultadoConsulta(
+      resultado
+    ) {
+
+      if (!resultado) {
+
+        mostrarError(
+          "No se encontró tu Club Card."
+        );
+
+        return;
+
+      }
+
+
+      mostrarCard(
+        resultado,
+        false
+      );
+
+    }
+
+
+    /*
+     * =====================================================
+     * MOSTRAR TARJETA
+     * =====================================================
+     */
+
+    function mostrarCard(
+      resultado,
+      yaRegistrada
+    ) {
+
+      const nombre =
+        escaparHTML(
+          resultado.nombre ||
+          "Miembro"
+        );
+
+
+      let visitas =
+        Number(
+          resultado.visitas || 0
+        );
+
+
+      if (visitas < 0) {
+        visitas = 0;
+      }
+
+      if (visitas > 10) {
+        visitas = 10;
+      }
+
+
+      const porcentaje =
+        (visitas / 10) * 100;
+
+
+      let mensaje;
+
+
+      if (yaRegistrada) {
+
+        mensaje =
+          "Tu visita de hoy ya está registrada.";
+
+      } else if (visitas >= 10) {
+
+        mensaje =
+          "Has completado tus 10 visitas.";
+
+      } else {
+
+        mensaje =
+          "Visita registrada correctamente.";
+
+      }
+
+
+      document
+        .getElementById("resultado")
+        .innerHTML =
+
+        '<div class="member">' +
+
+        '<div class="member-label">' +
+        'MEMBER' +
+        '</div>' +
+
+        '<div class="nombre">' +
+        nombre +
+        '</div>' +
+
+        '<div class="visitas">' +
+        visitas +
+        ' / 10' +
+        '</div>' +
+
+        '<div class="visitas-label">' +
+        'VISITAS' +
+        '</div>' +
+
+        '<div class="barra">' +
+
+        '<div class="progreso" ' +
+        'style="width:' +
+        porcentaje +
+        '%"></div>' +
+
+        '</div>' +
+
+        '<div class="beneficio">' +
+
+        '<div class="beneficio-label">' +
+        'MEMBER BENEFIT' +
+        '</div>' +
+
+        '<div class="beneficio-texto">' +
+        escaparHTML(
+          mensaje
+        ) +
+        '</div>' +
+
+        '</div>' +
+
+        '</div>';
+
+    }
+
+
+    /*
+     * =====================================================
+     * CARGANDO
+     * =====================================================
+     */
+
+    function mostrarCargando(
+      texto
+    ) {
 
       document
         .getElementById("resultado")
@@ -904,14 +1329,22 @@
 
         '<div class="loader"></div>' +
 
-        texto +
+        escaparHTML(texto) +
 
         '</div>';
 
     }
 
 
-    function mostrarError(texto) {
+    /*
+     * =====================================================
+     * ERROR
+     * =====================================================
+     */
+
+    function mostrarError(
+      texto
+    ) {
 
       document
         .getElementById("resultado")
@@ -926,22 +1359,53 @@
     }
 
 
-    function escaparHTML(texto) {
+    /*
+     * =====================================================
+     * SEGURIDAD HTML
+     * =====================================================
+     */
 
-      return String(texto || "")
+    function escaparHTML(
+      texto
+    ) {
 
-        .replace(/&/g, "&amp;")
+      return String(
+        texto || ""
+      )
 
-        .replace(/</g, "&lt;")
+        .replace(
+          /&/g,
+          "&amp;"
+        )
 
-        .replace(/>/g, "&gt;")
+        .replace(
+          /</g,
+          "&lt;"
+        )
 
-        .replace(/"/g, "&quot;")
+        .replace(
+          />/g,
+          "&gt;"
+        )
 
-        .replace(/'/g, "&#039;");
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
+
+    /*
+     * =====================================================
+     * SERVICE WORKER
+     * =====================================================
+     */
 
     if (
       "serviceWorker" in navigator
@@ -982,6 +1446,12 @@
 
     }
 
+
+    /*
+     * =====================================================
+     * SPLASH SCREEN
+     * =====================================================
+     */
 
     window.addEventListener(
       "load",
