@@ -10,14 +10,17 @@
         content="TCS Card">
   <title>TCS Card — The Club Studio</title>
   <link rel="manifest" href="manifest.json">
+
   <style>
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
+
     html {
       background: #050505;
     }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -45,6 +48,7 @@
         18px;
       overflow-x: hidden;
     }
+
     body::before {
       content: "";
       position: fixed;
@@ -57,10 +61,12 @@
       filter: blur(85px);
       pointer-events: none;
     }
+
     .app {
       width: 100%;
       max-width: 430px;
     }
+
     .card {
       position: relative;
       width: 100%;
@@ -81,6 +87,7 @@
         inset 0 1px 0 rgba(255,255,255,.07);
       overflow: hidden;
     }
+
     .card::before {
       content: "";
       position: absolute;
@@ -98,6 +105,7 @@
       transform: rotate(-15deg);
       pointer-events: none;
     }
+
     .brand {
       position: relative;
       font-size: 9px;
@@ -105,6 +113,7 @@
       color: #9a9a9a;
       margin-bottom: 13px;
     }
+
     .title {
       position: relative;
       font-family: Georgia, serif;
@@ -122,12 +131,14 @@
       background-clip: text;
       color: transparent;
     }
+
     .subtitle {
       color: #707070;
       font-size: 10px;
       letter-spacing: 3px;
       margin-bottom: 28px;
     }
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -141,10 +152,12 @@
       letter-spacing: 2.5px;
       margin-bottom: 18px;
     }
+
     .menu {
       display: grid;
       gap: 11px;
     }
+
     button {
       width: 100%;
       min-height: 54px;
@@ -161,22 +174,27 @@
         transform .15s ease,
         opacity .15s ease;
     }
+
     button:active {
       transform: scale(.98);
     }
+
     button:disabled {
       opacity: .55;
     }
+
     .secondary {
       background: rgba(255,255,255,.015);
       color: white;
       border: 1px solid #454545;
     }
+
     .dark-button {
       background: #161616;
       color: #d0d0d0;
       border: 1px solid #383838;
     }
+
     input {
       width: 100%;
       padding: 17px 15px;
@@ -190,15 +208,19 @@
       text-align: center;
       -webkit-appearance: none;
     }
+
     input:focus {
       border-color: #777;
     }
+
     .hidden {
       display: none !important;
     }
+
     /* =========================
        CLUB CARD PREMIUM
        ========================= */
+
     .member {
       position: relative;
       margin-top: 20px;
@@ -219,6 +241,7 @@
       overflow: hidden;
       animation: appear .4s ease;
     }
+
     .member::before {
       content: "";
       position: absolute;
@@ -236,6 +259,7 @@
       transform: rotate(-18deg);
       pointer-events: none;
     }
+
     .member-top {
       position: relative;
       display: flex;
@@ -245,11 +269,13 @@
       border-bottom: 1px solid #333;
       margin-bottom: 22px;
     }
+
     .member-brand {
       font-size: 8px;
       letter-spacing: 3px;
       color: #8b8b8b;
     }
+
     .member-status {
       display: flex;
       align-items: center;
@@ -258,6 +284,7 @@
       letter-spacing: 1.7px;
       color: #aaa;
     }
+
     .status-dot {
       width: 6px;
       height: 6px;
@@ -266,12 +293,14 @@
       box-shadow:
         0 0 8px rgba(255,255,255,.55);
     }
+
     .member-label {
       font-size: 8px;
       letter-spacing: 3px;
       color: #696969;
       margin-bottom: 8px;
     }
+
     .nombre {
       font-family: Georgia, serif;
       font-size: 28px;
@@ -287,6 +316,7 @@
       background-clip: text;
       color: transparent;
     }
+
     .club-mark {
       display: inline-block;
       padding: 6px 10px;
@@ -297,12 +327,14 @@
       letter-spacing: 2px;
       margin-bottom: 20px;
     }
+
     .visitas {
       font-size: 49px;
       font-weight: 500;
       letter-spacing: -2px;
       line-height: 1;
     }
+
     .visitas-label {
       font-size: 8px;
       letter-spacing: 3px;
@@ -310,6 +342,7 @@
       margin-top: 8px;
       margin-bottom: 19px;
     }
+
     .barra {
       width: 100%;
       height: 6px;
@@ -318,6 +351,7 @@
       overflow: hidden;
       margin-bottom: 9px;
     }
+
     .progreso {
       height: 100%;
       background:
@@ -332,6 +366,7 @@
         0 0 8px rgba(255,255,255,.18);
       transition: width .7s ease;
     }
+
     .progress-meta {
       display: flex;
       justify-content: space-between;
@@ -340,22 +375,26 @@
       color: #646464;
       margin-bottom: 21px;
     }
+
     .beneficio {
       border-top: 1px solid #333;
       padding-top: 18px;
       margin-top: 2px;
     }
+
     .beneficio-label {
       font-size: 7px;
       letter-spacing: 3px;
       color: #6f6f6f;
       margin-bottom: 9px;
     }
+
     .beneficio-texto {
       font-size: 13px;
       line-height: 1.55;
       color: #d0d0d0;
     }
+
     .unlocked {
       margin-top: 18px;
       padding: 14px;
@@ -373,9 +412,11 @@
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.05);
     }
+
     /* =========================
        QR PERSONAL
        ========================= */
+
     .qr-box {
       margin-top: 20px;
       padding: 20px 16px 17px;
@@ -388,18 +429,21 @@
           rgba(255,255,255,.01)
         );
     }
+
     .qr-title {
       font-size: 9px;
       letter-spacing: 3px;
       color: #8a8a8a;
       margin-bottom: 6px;
     }
+
     .qr-subtitle {
       font-size: 11px;
       color: #bdbdbd;
       line-height: 1.5;
       margin-bottom: 16px;
     }
+
     #qrcode {
       width: 190px;
       height: 190px;
@@ -411,27 +455,32 @@
       align-items: center;
       justify-content: center;
     }
+
     #qrcode img,
     #qrcode canvas {
       width: 170px !important;
       height: 170px !important;
       display: block;
     }
+
     .member-id {
       font-size: 9px;
       letter-spacing: 1.5px;
       color: #777;
       word-break: break-all;
     }
+
     .qr-note {
       margin-top: 13px;
       color: #666;
       font-size: 9px;
       line-height: 1.5;
     }
+
     .qr-close {
       margin-top: 11px;
     }
+
     @keyframes appear {
       from {
         opacity: 0;
@@ -439,6 +488,7 @@
           translateY(10px)
           scale(.985);
       }
+
       to {
         opacity: 1;
         transform:
@@ -446,27 +496,32 @@
           scale(1);
       }
     }
+
     .success {
       margin-top: 20px;
       color: #cfcfcf;
       font-size: 13px;
       line-height: 1.6;
     }
+
     .error {
       margin-top: 18px;
       color: #d99090;
       font-size: 13px;
       line-height: 1.5;
     }
+
     .back {
       margin-top: 10px;
     }
+
     .footer {
       margin-top: 23px;
       color: #555;
       font-size: 8px;
       letter-spacing: 3px;
     }
+
     .install-box {
       margin-top: 18px;
       padding: 18px;
@@ -474,16 +529,19 @@
       border: 1px solid #3b3b3b;
       background: #111;
     }
+
     .install-title {
       font-size: 11px;
       letter-spacing: 2px;
       margin-bottom: 13px;
     }
+
     .install-text {
       color: #999;
       font-size: 12px;
       line-height: 1.6;
     }
+
     .loader {
       margin: 22px auto;
       width: 28px;
@@ -493,11 +551,13 @@
       border-radius: 50%;
       animation: spin .8s linear infinite;
     }
+
     @keyframes spin {
       to {
         transform: rotate(360deg);
       }
     }
+
     #splash {
       position: fixed;
       inset: 0;
@@ -517,11 +577,13 @@
         opacity .5s ease,
         visibility .5s ease;
     }
+
     #splash.hide {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
+
     .splash-logo {
       font-family: Georgia, serif;
       font-size: 45px;
@@ -537,6 +599,7 @@
       background-clip: text;
       color: transparent;
     }
+
     .splash-name {
       color: #777;
       font-size: 9px;
@@ -544,316 +607,756 @@
     }
   </style>
 </head>
+
 <body>
+
   <div id="splash">
-<div>
-  <div class="splash-logo">
-    TCS
+    <div>
+      <div class="splash-logo">
+        TCS
+      </div>
+
+      <div class="splash-name">
+        THE CLUB STUDIO
+      </div>
+    </div>
   </div>
-  <div class="splash-name">
-    THE CLUB STUDIO
-  </div>
-</div>
-  </div>
+
   <div class="app">
-<div class="card">
-  <div class="brand">
-    THE CLUB STUDIO
-  </div>
-  <div class="title">
-    TCS CARD
-  </div>
-  <div class="subtitle">
-    MEMBER EXPERIENCE
-  </div>
-  <div class="badge">
-    DIGITAL MEMBERSHIP
-  </div>
-  <div id="inicio">
-    <div class="menu">
-      <button onclick="mostrarRegistro()">
-        REGISTRAR VISITA
-      </button>
-      <button
-        class="secondary"
-        onclick="mostrarConsulta()">
-        MI CLUB CARD
-      </button>
-      <button
-        class="dark-button"
-        onclick="mostrarInstalacion()">
-        ＋ AÑADIR TCS CARD
-      </button>
-    </div>
-  </div>
-  <div id="registro" class="hidden">
-    <input
-      id="nombre"
-      type="text"
-      autocomplete="name"
-      placeholder="Tu nombre">
-    <input
-      id="whatsapp"
-      type="tel"
-      autocomplete="tel"
-      inputmode="tel"
-      placeholder="Tu WhatsApp">
-    <button
-      id="btnRegistro"
-      onclick="registrarVisita()">
-      CONTINUAR
-    </button>
-    <div class="back">
-      <button
-        class="secondary"
-        onclick="volverInicio()">
-        VOLVER
-      </button>
-    </div>
-  </div>
-  <div id="consulta" class="hidden">
-    <input
-      id="whatsappConsulta"
-      type="tel"
-      autocomplete="tel"
-      inputmode="tel"
-      placeholder="Tu WhatsApp">
-    <button
-      id="btnConsulta"
-      onclick="consultarCard()">
-      CONSULTAR MI CLUB CARD
-    </button>
-    <div class="back">
-      <button
-        class="secondary"
-        onclick="volverInicio()">
-        VOLVER
-      </button>
-    </div>
-  </div>
-  <div id="instalacion" class="hidden">
-    <div class="install-box">
-      <div class="install-title">
+
+    <div class="card">
+
+      <div class="brand">
+        THE CLUB STUDIO
+      </div>
+
+      <div class="title">
         TCS CARD
       </div>
-      <div class="install-text">
-        <strong>iPhone</strong><br><br>
-        Abre esta página en Safari,
-        toca <strong>Compartir</strong>
-        y después selecciona
-        <strong>“Añadir a pantalla de inicio”</strong>.
-        <br><br>
-        <strong>Android</strong><br><br>
-        Abre esta página en Chrome,
-        toca los <strong>tres puntos ⋮</strong>
-        y selecciona
-        <strong>“Instalar aplicación”</strong>
-        o <strong>“Añadir a pantalla de inicio”</strong>.
+
+      <div class="subtitle">
+        MEMBER EXPERIENCE
       </div>
+
+      <div class="badge">
+        DIGITAL MEMBERSHIP
+      </div>
+
+
+      <!-- =========================
+           INICIO
+           ========================= -->
+
+      <div id="inicio">
+
+        <div class="menu">
+
+          <button onclick="mostrarRegistro()">
+            REGISTRARME
+          </button>
+
+          <button
+            class="secondary"
+            onclick="mostrarConsulta()">
+            MI CLUB CARD
+          </button>
+
+          <button
+            class="dark-button"
+            onclick="mostrarInstalacion()">
+            ＋ AÑADIR TCS CARD
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           REGISTRO DE NUEVO CLIENTE
+           ========================= -->
+
+      <div id="registro" class="hidden">
+
+        <input
+          id="nombre"
+          type="text"
+          autocomplete="name"
+          placeholder="Tu nombre">
+
+        <input
+          id="whatsapp"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          placeholder="Tu WhatsApp">
+
+        <button
+          id="btnRegistro"
+          onclick="registrarme()">
+          CREAR MI TCS CARD
+        </button>
+
+        <div class="back">
+
+          <button
+            class="secondary"
+            onclick="volverInicio()">
+            VOLVER
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           CONSULTAR CLUB CARD
+           ========================= -->
+
+      <div id="consulta" class="hidden">
+
+        <input
+          id="whatsappConsulta"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          placeholder="Tu WhatsApp">
+
+        <button
+          id="btnConsulta"
+          onclick="consultarCard()">
+          CONSULTAR MI CLUB CARD
+        </button>
+
+        <div class="back">
+
+          <button
+            class="secondary"
+            onclick="volverInicio()">
+            VOLVER
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           INSTALACIÓN
+           ========================= -->
+
+      <div id="instalacion" class="hidden">
+
+        <div class="install-box">
+
+          <div class="install-title">
+            TCS CARD
+          </div>
+
+          <div class="install-text">
+
+            <strong>iPhone</strong><br><br>
+
+            Abre esta página en Safari,
+            toca <strong>Compartir</strong>
+            y después selecciona
+            <strong>“Añadir a pantalla de inicio”</strong>.
+
+            <br><br>
+
+            <strong>Android</strong><br><br>
+
+            Abre esta página en Chrome,
+            toca los <strong>tres puntos ⋮</strong>
+            y selecciona
+            <strong>“Instalar aplicación”</strong>
+            o <strong>“Añadir a pantalla de inicio”</strong>.
+
+          </div>
+
+        </div>
+
+        <div class="back">
+
+          <button
+            class="secondary"
+            onclick="volverInicio()">
+            VOLVER
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           RESULTADO
+           ========================= -->
+
+      <div id="resultado"></div>
+
+
+      <div class="footer">
+        MEMBER OF THE CLUB
+      </div>
+
     </div>
-    <div class="back">
-      <button
-        class="secondary"
-        onclick="volverInicio()">
-        VOLVER
-      </button>
-    </div>
+
   </div>
-  <div id="resultado"></div>
-  <div class="footer">
-    MEMBER OF THE CLUB
-  </div>
-</div>
-  </div>
+
+
   <!-- ==========================================
        LIBRERÍA PARA GENERAR QR
        ========================================== -->
+
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
   </script>
+
+
   <script>
+
     /*
      * =====================================================
      * CONEXIÓN CON TU APPS SCRIPT
      * =====================================================
      */
+
     const APPS_SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
+      "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqDqRqpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
+
+
     const STORAGE_KEY =
       "tcs_card_whatsapp";
+
+
     /*
      * =====================================================
      * DATOS DEL MIEMBRO ACTUAL
      * =====================================================
      */
+
     let miembroActual = null;
+
+
+    /*
+     * =====================================================
+     * OCULTAR TODO
+     * =====================================================
+     */
+
     function ocultarTodo() {
+
       document
         .getElementById("inicio")
         .classList.add("hidden");
+
       document
         .getElementById("registro")
         .classList.add("hidden");
+
       document
         .getElementById("consulta")
         .classList.add("hidden");
+
       document
         .getElementById("instalacion")
         .classList.add("hidden");
+
       document
         .getElementById("resultado")
         .innerHTML = "";
     }
+
+
+    /*
+     * =====================================================
+     * VOLVER AL INICIO
+     * =====================================================
+     */
+
     function volverInicio() {
+
       ocultarTodo();
+
       document
         .getElementById("inicio")
         .classList.remove("hidden");
+
       miembroActual = null;
     }
+
+
+    /*
+     * =====================================================
+     * MOSTRAR REGISTRO
+     * =====================================================
+     */
+
     function mostrarRegistro() {
+
       ocultarTodo();
+
       document
         .getElementById("registro")
         .classList.remove("hidden");
+
       const guardado =
         localStorage.getItem(
           STORAGE_KEY
         );
+
       if (guardado) {
+
         document
           .getElementById("whatsapp")
           .value = guardado;
       }
     }
+
+
+    /*
+     * =====================================================
+     * MOSTRAR CONSULTA
+     * =====================================================
+     */
+
     function mostrarConsulta() {
+
       ocultarTodo();
+
       document
         .getElementById("consulta")
         .classList.remove("hidden");
+
       const guardado =
         localStorage.getItem(
           STORAGE_KEY
         );
+
       if (guardado) {
+
         document
           .getElementById("whatsappConsulta")
           .value = guardado;
       }
     }
+
+
+    /*
+     * =====================================================
+     * MOSTRAR INSTALACIÓN
+     * =====================================================
+     */
+
     function mostrarInstalacion() {
+
       ocultarTodo();
+
       document
         .getElementById("instalacion")
         .classList.remove("hidden");
     }
+
+
     /*
      * =====================================================
      * LLAMADA AL APPS SCRIPT
      * =====================================================
      */
+
     async function llamarAppsScript(datos) {
-      const respuesta = await fetch(
-        APPS_SCRIPT_URL,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "text/plain;charset=utf-8"
-          },
-          body: JSON.stringify(datos)
-        }
-      );
+
+      const respuesta =
+        await fetch(
+          APPS_SCRIPT_URL,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8"
+            },
+
+            body:
+              JSON.stringify(datos)
+          }
+        );
+
+
       if (!respuesta.ok) {
+
         throw new Error(
           "No se pudo conectar con TCS Card."
         );
       }
+
+
       const texto =
         await respuesta.text();
+
+
       let resultado;
+
+
       try {
-        resultado = JSON.parse(texto);
+
+        resultado =
+          JSON.parse(texto);
+
       } catch (error) {
+
         throw new Error(
           "El servidor respondió de forma inesperada."
         );
       }
+
+
       if (!resultado.ok) {
+
         throw new Error(
           resultado.error ||
           "Ocurrió un error en TCS Card."
         );
       }
+
+
       return resultado.resultado;
     }
+
+
     /*
      * =====================================================
-     * REGISTRAR VISITA
+     * REGISTRARME
+     * CREA LA MEMBRESÍA
+     * NO REGISTRA VISITA
      * =====================================================
      */
-    async function registrarVisita() {
+
+    async function registrarme() {
+
       const nombre =
         document
           .getElementById("nombre")
           .value
           .trim();
+
+
       const whatsapp =
         document
           .getElementById("whatsapp")
           .value
           .trim();
+
+
       if (!nombre || !whatsapp) {
+
         mostrarError(
           "Completa tu nombre y WhatsApp."
         );
+
         return;
       }
+
+
       const numero =
-        whatsapp.replace(/\D/g, "");
+        whatsapp.replace(
+          /\D/g,
+          ""
+        );
+
+
       if (numero.length < 10) {
+
         mostrarError(
           "Ingresa un número de WhatsApp válido."
         );
+
         return;
       }
-      localStorage.setItem(
-        STORAGE_KEY,
-        numero
-      );
+
+
       const boton =
         document.getElementById(
           "btnRegistro"
         );
+
+
       boton.disabled = true;
+
+
       mostrarCargando(
-        "Registrando tu visita..."
+        "Creando tu TCS Card..."
       );
+
+
       try {
+
         const resultado =
           await llamarAppsScript({
-            accion: "registrar",
-            nombre: nombre,
-            whatsapp: numero
+
+            accion:
+              "registrar_cliente",
+
+            nombre:
+              nombre,
+
+            whatsapp:
+              numero
           });
-        mostrarResultadoVisita(
-          resultado
+
+
+        /*
+         * ===============================================
+         * YA EXISTE
+         * ===============================================
+         */
+
+        if (
+          resultado &&
+          resultado.estado ===
+          "ya_existe"
+        ) {
+
+          localStorage.setItem(
+            STORAGE_KEY,
+            numero
+          );
+
+
+          miembroActual =
+            resultado;
+
+
+          mostrarClienteExistente(
+            resultado
+          );
+
+
+          return;
+        }
+
+
+        /*
+         * ===============================================
+         * CLIENTE CREADO
+         * ===============================================
+         */
+
+        if (
+          resultado &&
+          resultado.estado ===
+          "creado"
+        ) {
+
+          localStorage.setItem(
+            STORAGE_KEY,
+            numero
+          );
+
+
+          miembroActual =
+            resultado;
+
+
+          mostrarRegistroExitoso(
+            resultado
+          );
+
+
+          return;
+        }
+
+
+        throw new Error(
+          "No se pudo crear tu membresía."
         );
+
       } catch (error) {
+
         mostrarError(
           error.message ||
-          "No fue posible registrar la visita."
+          "No fue posible crear tu TCS Card."
         );
+
       } finally {
+
         boton.disabled = false;
       }
     }
+
+
+    /*
+     * =====================================================
+     * REGISTRO EXITOSO
+     * =====================================================
+     */
+
+    function mostrarRegistroExitoso(
+      resultado
+    ) {
+
+      document
+        .getElementById("resultado")
+        .innerHTML =
+
+        '<div class="success">' +
+
+        '<div class="member">' +
+
+        '<div class="member-top">' +
+
+        '<div class="member-brand">' +
+        'TCS MEMBER' +
+        '</div>' +
+
+        '<div class="member-status">' +
+        '<span class="status-dot"></span>' +
+        'ACTIVE MEMBER' +
+        '</div>' +
+
+        '</div>' +
+
+        '<div class="member-label">' +
+        'WELCOME TO THE CLUB' +
+        '</div>' +
+
+        '<div class="nombre">' +
+        escaparHTML(
+          resultado.nombre ||
+          "Miembro"
+        ) +
+        '</div>' +
+
+        '<div class="club-mark">' +
+        'THE CLUB STUDIO · MEMBER EXPERIENCE' +
+        '</div>' +
+
+        '<div class="visitas">' +
+        '0 / 10' +
+        '</div>' +
+
+        '<div class="visitas-label">' +
+        'VISITAS COMPLETADAS' +
+        '</div>' +
+
+        '<div class="barra">' +
+
+        '<div class="progreso" ' +
+        'style="width:0%">' +
+        '</div>' +
+
+        '</div>' +
+
+        '<div class="progress-meta">' +
+        '<span>MEMBERSHIP PROGRESS</span>' +
+        '<span>0%</span>' +
+        '</div>' +
+
+        '<div class="beneficio">' +
+
+        '<div class="beneficio-label">' +
+        'MEMBER BENEFIT' +
+        '</div>' +
+
+        '<div class="beneficio-texto">' +
+        'Tu membresía está activa. ' +
+        'Tu primera visita será registrada ' +
+        'por el equipo de The Club Studio ' +
+        'al escanear tu QR.' +
+        '</div>' +
+
+        '</div>' +
+
+        '<button ' +
+        'style="margin-top:18px" ' +
+        'onclick="mostrarQR()">' +
+        'MI QR' +
+        '</button>' +
+
+        '</div>' +
+
+        '</div>';
+    }
+
+
+    /*
+     * =====================================================
+     * CLIENTE YA EXISTENTE
+     * =====================================================
+     */
+
+    function mostrarClienteExistente(
+      resultado
+    ) {
+
+      document
+        .getElementById("resultado")
+        .innerHTML =
+
+        '<div class="success">' +
+
+        '<div class="member">' +
+
+        '<div class="member-top">' +
+
+        '<div class="member-brand">' +
+        'TCS MEMBER' +
+        '</div>' +
+
+        '<div class="member-status">' +
+        '<span class="status-dot"></span>' +
+        'MEMBERSHIP FOUND' +
+        '</div>' +
+
+        '</div>' +
+
+        '<div class="member-label">' +
+        'MEMBERSHIP ALREADY EXISTS' +
+        '</div>' +
+
+        '<div class="nombre">' +
+        escaparHTML(
+          resultado.nombre ||
+          "Miembro"
+        ) +
+        '</div>' +
+
+        '<div class="club-mark">' +
+        'THE CLUB STUDIO · MEMBER EXPERIENCE' +
+        '</div>' +
+
+        '<div class="beneficio">' +
+
+        '<div class="beneficio-texto">' +
+        'Este número de WhatsApp ya está ' +
+        'asociado a una membresía TCS. ' +
+        'No creamos una segunda cuenta.' +
+        '</div>' +
+
+        '</div>' +
+
+        '<button ' +
+        'style="margin-top:18px" ' +
+        'onclick="mostrarCard(miembroActual, false)">' +
+        'VER MI CLUB CARD' +
+        '</button>' +
+
+        '</div>' +
+
+        '</div>';
+    }
+
+
     /*
      * =====================================================
      * CONSULTAR CLUB CARD
      * =====================================================
      */
+
     async function consultarCard() {
+
       const whatsapp =
         document
           .getElementById(
@@ -861,473 +1364,581 @@
           )
           .value
           .trim();
+
+
       if (!whatsapp) {
+
         mostrarError(
           "Ingresa tu número de WhatsApp."
         );
+
         return;
       }
+
+
       const numero =
-        whatsapp.replace(/\D/g, "");
+        whatsapp.replace(
+          /\D/g,
+          ""
+        );
+
+
       if (numero.length < 10) {
+
         mostrarError(
           "Ingresa un número de WhatsApp válido."
         );
+
         return;
       }
+
+
       localStorage.setItem(
         STORAGE_KEY,
         numero
       );
+
+
       const boton =
         document.getElementById(
           "btnConsulta"
         );
+
+
       boton.disabled = true;
+
+
       mostrarCargando(
         "Consultando tu Club Card..."
       );
+
+
       try {
+
         const resultado =
           await llamarAppsScript({
-            accion: "buscar",
-            whatsapp: numero
+
+            accion:
+              "buscar",
+
+            whatsapp:
+              numero
           });
+
+
         mostrarResultadoConsulta(
           resultado
         );
+
       } catch (error) {
+
         mostrarError(
           error.message ||
           "No fue posible consultar tu Club Card."
         );
+
       } finally {
+
         boton.disabled = false;
       }
     }
-    /*
-     * =====================================================
-     * MOSTRAR RESULTADO DE REGISTRO
-     * =====================================================
-     */
-    function mostrarResultadoVisita(
-      resultado
-    ) {
-      if (!resultado) {
-        mostrarError(
-          "No se recibió respuesta."
-        );
-        return;
-      }
-      if (
-        resultado.estado ===
-        "corte_gratis"
-      ) {
-        miembroActual = resultado;
-        document
-          .getElementById("resultado")
-          .innerHTML =
-          '<div class="member">' +
-          '<div class="member-top">' +
-          '<div class="member-brand">' +
-          'TCS MEMBER' +
-          '</div>' +
-          '<div class="member-status">' +
-          '<span class="status-dot"></span>' +
-          'ACTIVE MEMBER' +
-          '</div>' +
-          '</div>' +
-          '<div class="member-label">' +
-          'MEMBER NAME' +
-          '</div>' +
-          '<div class="nombre">' +
-          escaparHTML(
-            resultado.nombre ||
-            "Miembro"
-          ) +
-          '</div>' +
-          '<div class="club-mark">' +
-          'THE CLUB STUDIO · MEMBER EXPERIENCE' +
-          '</div>' +
-          '<div class="visitas">' +
-          '10 / 10' +
-          '</div>' +
-          '<div class="visitas-label">' +
-          'VISITAS COMPLETADAS' +
-          '</div>' +
-          '<div class="barra">' +
-          '<div class="progreso" ' +
-          'style="width:100%"></div>' +
-          '</div>' +
-          '<div class="progress-meta">' +
-          '<span>MEMBERSHIP PROGRESS</span>' +
-          '<span>100%</span>' +
-          '</div>' +
-          '<div class="unlocked">' +
-          '✦ BENEFICIO DESBLOQUEADO ✦' +
-          '</div>' +
-          '<div class="beneficio">' +
-          '<div class="beneficio-label">' +
-          'MEMBER BENEFIT' +
-          '</div>' +
-          '<div class="beneficio-texto">' +
-          'Has completado tus 10 visitas. ' +
-          'Tu próxima visita corresponde a tu ' +
-          'beneficio gratuito.' +
-          '</div>' +
-          '</div>' +
-          '<button ' +
-          'class="secondary" ' +
-          'style="margin-top:16px" ' +
-          'onclick="mostrarQR()">' +
-          'MI QR' +
-          '</button>' +
-          '</div>';
-        return;
-      }
-      if (
-        resultado.estado ===
-        "ya_registrada"
-      ) {
-        miembroActual = resultado;
-        mostrarCard(
-          resultado,
-          true
-        );
-        return;
-      }
-      miembroActual = resultado;
-      mostrarCard(
-        resultado,
-        false
-      );
-    }
+
+
     /*
      * =====================================================
      * MOSTRAR RESULTADO DE CONSULTA
      * =====================================================
      */
+
     function mostrarResultadoConsulta(
       resultado
     ) {
+
       if (!resultado) {
+
         mostrarError(
-          "No se encontró tu Club Card."
+          "No se encontró una membresía con ese WhatsApp."
         );
+
         return;
       }
-      miembroActual = resultado;
+
+
+      miembroActual =
+        resultado;
+
+
       mostrarCard(
         resultado,
         false
       );
     }
+
+
     /*
      * =====================================================
      * MOSTRAR TARJETA
      * =====================================================
      */
+
     function mostrarCard(
       resultado,
       yaRegistrada
     ) {
-      miembroActual = resultado;
+
+      miembroActual =
+        resultado;
+
+
       const nombre =
         escaparHTML(
           resultado.nombre ||
           "Miembro"
         );
+
+
       let visitas =
         Number(
           resultado.visitas || 0
         );
+
+
       if (visitas < 0) {
         visitas = 0;
       }
+
+
       if (visitas > 10) {
         visitas = 10;
       }
+
+
       const porcentaje =
         (visitas / 10) * 100;
+
+
       let mensaje;
+
+
       if (yaRegistrada) {
+
         mensaje =
           "Tu visita de hoy ya está registrada.";
+
       } else if (visitas >= 10) {
+
         mensaje =
           "Has completado tus 10 visitas.";
+
       } else {
+
         const restantes =
           10 - visitas;
+
+
         mensaje =
           "Te faltan " +
           restantes +
-          (restantes === 1
-            ? " visita"
-            : " visitas") +
+          (
+            restantes === 1
+              ? " visita"
+              : " visitas"
+          ) +
           " para desbloquear tu beneficio.";
       }
+
+
       document
         .getElementById("resultado")
         .innerHTML =
+
         '<div class="member">' +
+
         '<div class="member-top">' +
+
         '<div class="member-brand">' +
         'TCS MEMBER' +
         '</div>' +
+
         '<div class="member-status">' +
+
         '<span class="status-dot"></span>' +
+
         'ACTIVE MEMBER' +
+
         '</div>' +
+
         '</div>' +
+
         '<div class="member-label">' +
         'MEMBER NAME' +
         '</div>' +
+
         '<div class="nombre">' +
         nombre +
         '</div>' +
+
         '<div class="club-mark">' +
         'THE CLUB STUDIO · MEMBER EXPERIENCE' +
         '</div>' +
+
         '<div class="visitas">' +
         visitas +
         ' / 10' +
         '</div>' +
+
         '<div class="visitas-label">' +
         'VISITAS COMPLETADAS' +
         '</div>' +
+
         '<div class="barra">' +
+
         '<div class="progreso" ' +
         'style="width:' +
         porcentaje +
-        '%"></div>' +
+        '%">' +
         '</div>' +
+
+        '</div>' +
+
         '<div class="progress-meta">' +
+
         '<span>MEMBERSHIP PROGRESS</span>' +
+
         '<span>' +
         Math.round(porcentaje) +
-        '%</span>' +
+        '%' +
+        '</span>' +
+
         '</div>' +
+
         '<div class="beneficio">' +
+
         '<div class="beneficio-label">' +
         'MEMBER BENEFIT' +
         '</div>' +
+
         '<div class="beneficio-texto">' +
         escaparHTML(
           mensaje
         ) +
         '</div>' +
+
         '</div>' +
+
         '<button ' +
         'style="margin-top:18px" ' +
         'onclick="mostrarQR()">' +
         'MI QR' +
         '</button>' +
+
         '</div>';
     }
+
+
     /*
      * =====================================================
      * MOSTRAR QR PERSONAL
      * =====================================================
      */
+
     function mostrarQR() {
+
       if (
         !miembroActual ||
         !miembroActual.id
       ) {
+
         mostrarError(
           "No pudimos obtener tu Member ID."
         );
+
         return;
       }
+
+
       const id =
         String(
           miembroActual.id
         ).trim();
+
+
       ocultarResultadoParaQR();
+
+
       const resultado =
         document.getElementById(
           "resultado"
         );
+
+
       resultado.innerHTML =
+
         '<div class="member">' +
+
         '<div class="member-top">' +
+
         '<div class="member-brand">' +
         'TCS MEMBER' +
         '</div>' +
+
         '<div class="member-status">' +
+
         '<span class="status-dot"></span>' +
+
         'ACTIVE MEMBER' +
+
         '</div>' +
+
         '</div>' +
+
         '<div class="qr-box">' +
+
         '<div class="qr-title">' +
         'PERSONAL MEMBER QR' +
         '</div>' +
+
         '<div class="qr-subtitle">' +
         'Muestra este código al equipo de ' +
         'The Club Studio para identificar tu membresía.' +
         '</div>' +
+
         '<div id="qrcode"></div>' +
+
         '<div class="member-id">' +
         escaparHTML(id) +
         '</div>' +
+
         '<div class="qr-note">' +
         'Este código identifica tu membresía. ' +
         'No registra visitas por sí solo.' +
         '</div>' +
+
         '</div>' +
+
         '<div class="qr-close">' +
+
         '<button ' +
         'class="secondary" ' +
         'onclick="mostrarCard(miembroActual, false)">' +
+
         'VOLVER A MI CLUB CARD' +
+
         '</button>' +
+
         '</div>' +
+
         '</div>';
+
+
       if (
         typeof QRCode ===
         "undefined"
       ) {
+
         mostrarError(
           "No se pudo cargar el generador QR. Revisa tu conexión a internet."
         );
+
         return;
       }
+
+
       new QRCode(
+
         document.getElementById(
           "qrcode"
         ),
+
         {
-          text: id,
-          width: 170,
-          height: 170,
-          colorDark: "#000000",
-          colorLight: "#ffffff",
+
+          text:
+            id,
+
+          width:
+            170,
+
+          height:
+            170,
+
+          colorDark:
+            "#000000",
+
+          colorLight:
+            "#ffffff",
+
           correctLevel:
             QRCode.CorrectLevel.H
         }
       );
     }
+
+
     function ocultarResultadoParaQR() {
+
       document
         .getElementById("resultado")
         .innerHTML = "";
     }
+
+
     /*
      * =====================================================
      * CARGANDO
      * =====================================================
      */
+
     function mostrarCargando(
       texto
     ) {
+
       document
         .getElementById("resultado")
         .innerHTML =
+
         '<div class="success">' +
+
         '<div class="loader"></div>' +
+
         escaparHTML(texto) +
+
         '</div>';
     }
+
+
     /*
      * =====================================================
      * ERROR
      * =====================================================
      */
+
     function mostrarError(
       texto
     ) {
+
       document
         .getElementById("resultado")
         .innerHTML =
+
         '<div class="error">' +
+
         escaparHTML(texto) +
+
         '</div>';
     }
+
+
     /*
      * =====================================================
      * SEGURIDAD HTML
      * =====================================================
      */
+
     function escaparHTML(
       texto
     ) {
+
       return String(
         texto || ""
       )
+
         .replace(
           /&/g,
           "&amp;"
         )
+
         .replace(
           /</g,
           "&lt;"
         )
+
         .replace(
           />/g,
           "&gt;"
         )
+
         .replace(
           /"/g,
           "&quot;"
         )
+
         .replace(
           /'/g,
           "&#039;"
         );
     }
+
+
     /*
      * =====================================================
      * SERVICE WORKER
      * =====================================================
      */
+
     if (
       "serviceWorker" in navigator
     ) {
+
       window.addEventListener(
         "load",
         function() {
+
           navigator.serviceWorker
             .register(
               "service-worker.js"
             )
+
             .then(
               function() {
+
                 console.log(
                   "TCS Card Service Worker activo."
                 );
+
               }
             )
+
             .catch(
               function(error) {
+
                 console.log(
                   "Service Worker:",
                   error
                 );
+
               }
             );
+
         }
       );
     }
+
+
     /*
      * =====================================================
      * SPLASH SCREEN
      * =====================================================
      */
+
     window.addEventListener(
       "load",
       function() {
+
         setTimeout(
           function() {
+
             document
               .getElementById("splash")
               .classList.add("hide");
+
           },
           1200
         );
+
       }
     );
+
   </script>
+
 </body>
 </html>
