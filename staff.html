@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0c0e">
+
   <title>TCS STAFF</title>
 
   <style>
@@ -14,567 +14,764 @@
     body {
       margin: 0;
       min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, #1b1d20 0%, #0b0c0e 45%, #050506 100%);
-      color: #f2f2f2;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-
+        radial-gradient(circle at top, #202020 0%, #0d0d0d 45%, #050505 100%);
+      color: #fff;
       display: flex;
       justify-content: center;
-      align-items: center;
-
-      padding: 24px;
+      padding: 30px 16px;
     }
 
     .container {
       width: 100%;
-      max-width: 430px;
-      text-align: center;
+      max-width: 480px;
     }
 
     .brand {
-      letter-spacing: 5px;
-      font-size: 13px;
-      color: #a9adb2;
-      margin-bottom: 8px;
+      text-align: center;
+      margin-bottom: 25px;
     }
 
-    h1 {
+    .brand h1 {
       margin: 0;
-      font-size: 32px;
+      font-size: 25px;
+      letter-spacing: 5px;
       font-weight: 600;
-      letter-spacing: 2px;
     }
 
-    .subtitle {
-      margin-top: 10px;
-      color: #8e9399;
-      font-size: 14px;
+    .brand p {
+      margin: 8px 0 0;
+      color: #999;
+      font-size: 12px;
+      letter-spacing: 3px;
     }
 
     .card {
-      margin-top: 30px;
-
-      background: rgba(22, 24, 27, 0.92);
-
-      border: 1px solid #303338;
-      border-radius: 24px;
-
-      padding: 28px 22px;
-
-      box-shadow:
-        0 20px 60px rgba(0,0,0,.45);
+      background: rgba(20, 20, 20, 0.95);
+      border: 1px solid #303030;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
     }
 
-    .lock {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    .label {
-      display: block;
-      text-align: left;
-
-      font-size: 12px;
-      letter-spacing: 1.5px;
-
-      color: #92979d;
-
-      margin-bottom: 8px;
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #aaa;
+      margin-bottom: 18px;
     }
 
     input {
       width: 100%;
-
       padding: 16px;
-
-      border-radius: 14px;
-
-      border: 1px solid #383b40;
-
-      background: #0e0f11;
-
-      color: white;
-
+      border-radius: 12px;
+      border: 1px solid #383838;
+      background: #101010;
+      color: #fff;
       outline: none;
-
       font-size: 16px;
-
       text-align: center;
     }
 
     input:focus {
-      border-color: #858a90;
+      border-color: #777;
     }
 
     button {
       width: 100%;
-
-      margin-top: 16px;
-
+      border: none;
+      border-radius: 12px;
       padding: 16px;
-
-      border: 0;
-      border-radius: 14px;
-
-      background: #f1f1f1;
-
-      color: #0a0a0a;
-
-      font-size: 15px;
-
-      font-weight: 700;
-
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: bold;
       letter-spacing: 1px;
-
       cursor: pointer;
+      transition: .2s;
     }
 
     button:active {
       transform: scale(.98);
     }
 
-    button:disabled {
-      opacity: .5;
-      cursor: not-allowed;
+    .primary {
+      background: #fff;
+      color: #000;
     }
 
     .secondary {
-      background: transparent;
-      color: #f1f1f1;
-      border: 1px solid #383b40;
+      background: #202020;
+      color: #fff;
+      border: 1px solid #3a3a3a;
     }
 
-    .note {
-      margin-top: 20px;
-
-      font-size: 12px;
-
-      line-height: 1.5;
-
-      color: #777c82;
-    }
-
-    #status {
-      margin-top: 16px;
-
-      min-height: 20px;
-
-      font-size: 13px;
-
-      line-height: 1.5;
-    }
-
-    .success {
-      color: #d7d7d7;
-    }
-
-    .error {
-      color: #d98c8c;
+    .danger {
+      background: #1b1b1b;
+      color: #aaa;
+      border: 1px solid #333;
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
-    .staff-panel {
-      margin-top: 30px;
-    }
-
-    .staff-welcome {
-      font-family: Georgia, serif;
-
-      font-size: 24px;
-
-      margin-bottom: 8px;
-    }
-
-    .staff-description {
-      color: #858a90;
-
+    .message {
+      text-align: center;
+      margin-top: 15px;
       font-size: 13px;
-
       line-height: 1.5;
-
-      margin-bottom: 24px;
+      color: #aaa;
     }
 
-    .scanner-placeholder {
-      padding: 28px 18px;
+    .error {
+      color: #ff7b7b;
+    }
 
-      border: 1px dashed #44484d;
+    .success {
+      color: #a8e6a3;
+    }
 
-      border-radius: 18px;
+    #reader {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      margin-top: 15px;
+    }
 
-      color: #777c82;
+    .scanner-info {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 15px 0 5px;
+    }
 
+    .member-box {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #353535;
+      border-radius: 16px;
+      background: #111;
+    }
+
+    .member-label {
+      color: #888;
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-top: 12px;
+    }
+
+    .member-value {
+      margin-top: 5px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .member-id {
       font-size: 13px;
-
-      line-height: 1.6;
+      color: #aaa;
+      word-break: break-all;
     }
 
-    .scanner-icon {
-      font-size: 38px;
-      margin-bottom: 10px;
+    .visits {
+      font-size: 28px;
+      margin-top: 5px;
     }
 
-    .footer {
+    .confirm {
+      background: #fff;
+      color: #000;
+      margin-top: 20px;
+    }
+
+    .logout {
       margin-top: 25px;
+    }
 
+    .camera-note {
+      text-align: center;
+      color: #666;
       font-size: 11px;
+      margin-top: 12px;
+    }
 
-      color: #55595e;
-
-      letter-spacing: 1px;
+    @media (max-width: 420px) {
+      .card {
+        padding: 20px;
+      }
     }
   </style>
+
+  <!-- Librería para leer QR -->
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 </head>
 
 <body>
 
-  <main class="container">
+  <div class="container">
 
     <div class="brand">
-      THE CLUB STUDIO
+      <h1>THE CLUB STUDIO</h1>
+      <p>TCS STAFF</p>
     </div>
 
-    <h1>
-      TCS STAFF
-    </h1>
+    <!-- LOGIN -->
+    <div id="loginCard" class="card">
 
-    <div class="subtitle">
-      Panel privado del equipo
-    </div>
-
-
-    <!-- =====================================================
-         LOGIN
-         ===================================================== -->
-
-    <section
-      id="loginCard"
-      class="card">
-
-      <div class="lock">
-        ◈
+      <div class="section-title">
+        ACCESO PRIVADO
       </div>
 
-      <label
-        class="label"
-        for="staffKey">
-
-        ACCESO DEL EQUIPO
-
-      </label>
-
       <input
-        id="staffKey"
         type="password"
+        id="codigo"
         placeholder="Código de acceso"
         autocomplete="off"
       >
 
-      <button
-        id="loginButton"
-        onclick="entrar()">
-
+      <button class="primary" onclick="iniciarSesion()">
         ENTRAR
-
       </button>
 
-      <div
-        id="status">
-      </div>
+      <div id="loginMessage" class="message"></div>
 
-      <div class="note">
-        Este acceso es exclusivo para el equipo de
-        The Club Studio.
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PANEL STAFF
-         ===================================================== -->
-
-    <section
-      id="staffPanel"
-      class="card hidden">
-
-      <div class="staff-welcome">
-        Bienvenido, STAFF
-      </div>
-
-      <div class="staff-description">
-        Acceso autorizado al sistema interno
-        de The Club Studio.
-      </div>
-
-
-      <div class="scanner-placeholder">
-
-        <div class="scanner-icon">
-          ▣
-        </div>
-
-        <strong>
-          ESCÁNER QR
-        </strong>
-
-        <br><br>
-
-        El escáner de Member QR se habilitará
-        en el siguiente paso.
-
-      </div>
-
-
-      <button
-        class="secondary"
-        onclick="cerrarSesion()">
-
-        CERRAR SESIÓN
-
-      </button>
-
-    </section>
-
-
-    <div class="footer">
-      PRIVATE STAFF AREA · TCS
     </div>
 
-  </main>
+
+    <!-- PANEL STAFF -->
+    <div id="staffCard" class="card hidden">
+
+      <div class="section-title">
+        ESCÁNER QR
+      </div>
+
+      <div class="scanner-info">
+        Pide al cliente que muestre su<br>
+        <strong>MI QR</strong> de The Club Studio.
+      </div>
+
+      <div id="reader"></div>
+
+      <div id="scannerMessage" class="message"></div>
+
+      <!-- DATOS DEL CLIENTE -->
+      <div id="memberBox" class="member-box hidden">
+
+        <div class="member-label">
+          CLIENTE
+        </div>
+
+        <div id="memberName" class="member-value">
+          —
+        </div>
+
+        <div class="member-label">
+          MEMBER ID
+        </div>
+
+        <div id="memberID" class="member-value member-id">
+          —
+        </div>
+
+        <div class="member-label">
+          VISITAS ACTUALES
+        </div>
+
+        <div id="memberVisits" class="member-value visits">
+          —
+        </div>
+
+        <button
+          class="confirm"
+          onclick="confirmarVisita()"
+        >
+          CONFIRMAR VISITA
+        </button>
+
+        <button
+          class="secondary"
+          onclick="reiniciarEscaner()"
+        >
+          ESCANEAR OTRO
+        </button>
+
+      </div>
+
+      <button
+        class="danger logout"
+        onclick="cerrarSesion()"
+      >
+        CERRAR SESIÓN
+      </button>
+
+    </div>
+
+  </div>
 
 
-  <script>
+<script>
 
-    /* =======================================================
-       URL DE GOOGLE APPS SCRIPT
-       ======================================================= */
-
-    const API_URL =
-      "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
+  const API_URL =
+    "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
 
 
-    /* =======================================================
-       ENTRAR A TCS STAFF
-       ======================================================= */
+  /*
+   * El código NO se guarda en el HTML.
+   * Solo permanece en memoria mientras esta página está abierta.
+   */
+  let staffCode = "";
 
-    async function entrar() {
+  let scanner = null;
+  let scannerActivo = false;
 
-      const input =
-        document.getElementById("staffKey");
-
-      const button =
-        document.getElementById("loginButton");
-
-      const status =
-        document.getElementById("status");
-
-      const codigo =
-        input.value.trim();
+  let clienteActual = null;
 
 
-      if (!codigo) {
+  function iniciarSesion() {
 
-        status.className = "error";
+    const codigo =
+      document.getElementById("codigo").value.trim();
 
-        status.textContent =
-          "Ingresa el código de acceso.";
+    const message =
+      document.getElementById("loginMessage");
 
-        return;
-      }
+    if (!codigo) {
+      message.textContent =
+        "Introduce el código de acceso.";
+      message.className = "message error";
+      return;
+    }
 
-
-      button.disabled = true;
-
-      button.textContent =
-        "VERIFICANDO...";
-
-      status.className = "";
-
-      status.textContent =
-        "Comprobando autorización...";
+    message.textContent = "Verificando...";
+    message.className = "message";
 
 
-      try {
+    fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({
+        accion: "staff_login",
+        codigo: codigo
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
 
-        const respuesta =
-          await fetch(API_URL, {
+      if (data.ok) {
 
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "text/plain;charset=utf-8"
-            },
-
-            body: JSON.stringify({
-
-              accion: "staff_login",
-
-              codigo: codigo
-
-            })
-
-          });
-
-
-        const datos =
-          await respuesta.json();
-
-
-        if (
-          !datos.ok ||
-          !datos.resultado ||
-          !datos.resultado.autorizado
-        ) {
-
-          throw new Error(
-            "Código de acceso incorrecto."
-          );
-        }
-
-
-        /*
-          Guardamos únicamente la autorización
-          de esta sesión en el navegador.
-        */
+        staffCode = codigo;
 
         sessionStorage.setItem(
           "tcs_staff_authorized",
           "true"
         );
 
+        document.getElementById("loginCard")
+          .classList.add("hidden");
 
-        mostrarPanel();
+        document.getElementById("staffCard")
+          .classList.remove("hidden");
 
+        iniciarEscaner();
+
+      } else {
+
+        message.textContent =
+          data.mensaje ||
+          "Código de acceso incorrecto.";
+
+        message.className =
+          "message error";
 
       }
 
-      catch (error) {
+    })
+    .catch(error => {
 
-        status.className =
-          "error";
+      console.error(error);
 
-        status.textContent =
-          error.message ||
-          "No se pudo verificar el acceso.";
+      message.textContent =
+        "No se pudo conectar con el servidor.";
 
+      message.className =
+        "message error";
+
+    });
+
+  }
+
+
+  function iniciarEscaner() {
+
+    if (scannerActivo) return;
+
+    scanner =
+      new Html5Qrcode("reader");
+
+    const config = {
+      fps: 10,
+      qrbox: {
+        width: 250,
+        height: 250
+      }
+    };
+
+
+    scanner.start(
+      {
+        facingMode: "environment"
+      },
+      config,
+      qrDetectado,
+      error => {
+        // Ignoramos errores normales de lectura.
+      }
+    )
+    .then(() => {
+
+      scannerActivo = true;
+
+      document.getElementById("scannerMessage")
+        .textContent =
+        "Apunta la cámara al Member QR.";
+
+    })
+    .catch(error => {
+
+      console.error(error);
+
+      document.getElementById("scannerMessage")
+        .textContent =
+        "No se pudo iniciar la cámara. Revisa los permisos del navegador.";
+
+      document.getElementById("scannerMessage")
+        .className =
+        "message error";
+
+    });
+
+  }
+
+
+  function qrDetectado(decodedText) {
+
+    if (!decodedText) return;
+
+    const memberID =
+      decodedText.trim();
+
+    /*
+     * Evita múltiples lecturas consecutivas.
+     */
+    if (clienteActual) return;
+
+
+    detenerEscaner();
+
+
+    document.getElementById("scannerMessage")
+      .textContent =
+      "QR detectado. Verificando membresía...";
+
+
+    buscarMiembro(memberID);
+
+  }
+
+
+  function detenerEscaner() {
+
+    if (!scanner || !scannerActivo) return;
+
+    scanner.stop()
+      .then(() => {
+
+        scanner.clear();
+        scannerActivo = false;
+
+      })
+      .catch(error => {
+
+        console.error(error);
+        scannerActivo = false;
+
+      });
+
+  }
+
+
+  function buscarMiembro(memberID) {
+
+    /*
+     * En este paso consultamos el backend.
+     * La siguiente modificación del Apps Script
+     * permitirá buscar directamente por Member ID.
+     */
+
+    fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({
+        accion: "staff_buscar",
+        codigo: staffCode,
+        memberID: memberID
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+      if (!data.ok) {
+
+        document.getElementById("scannerMessage")
+          .textContent =
+          data.mensaje ||
+          "No se encontró esta membresía.";
+
+        document.getElementById("scannerMessage")
+          .className =
+          "message error";
+
+        setTimeout(() => {
+          reiniciarEscaner();
+        }, 1800);
+
+        return;
       }
 
-      finally {
 
-        button.disabled = false;
-
-        button.textContent =
-          "ENTRAR";
-      }
-    }
+      clienteActual = data.cliente;
 
 
-    /* =======================================================
-       MOSTRAR PANEL
-       ======================================================= */
+      document.getElementById("memberName")
+        .textContent =
+        clienteActual.nombre;
 
-    function mostrarPanel() {
+      document.getElementById("memberID")
+        .textContent =
+        clienteActual.id;
 
-      document
-        .getElementById("loginCard")
-        .classList.add("hidden");
+      document.getElementById("memberVisits")
+        .textContent =
+        clienteActual.visitas;
 
 
-      document
-        .getElementById("staffPanel")
+      document.getElementById("memberBox")
         .classList.remove("hidden");
+
+
+      document.getElementById("scannerMessage")
+        .textContent =
+        "Membresía identificada. Confirma la visita.";
+
+      document.getElementById("scannerMessage")
+        .className =
+        "message success";
+
+    })
+    .catch(error => {
+
+      console.error(error);
+
+      document.getElementById("scannerMessage")
+        .textContent =
+        "Error al consultar la membresía.";
+
+      document.getElementById("scannerMessage")
+        .className =
+        "message error";
+
+    });
+
+  }
+
+
+  function confirmarVisita() {
+
+    if (!clienteActual) {
+      return;
     }
 
 
-    /* =======================================================
-       CERRAR SESIÓN
-       ======================================================= */
+    const message =
+      document.getElementById("scannerMessage");
 
-    function cerrarSesion() {
 
+    message.textContent =
+      "Registrando visita...";
+
+    message.className =
+      "message";
+
+
+    fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({
+        accion: "staff_registrar",
+        codigo: staffCode,
+        memberID: clienteActual.id
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+      if (!data.ok) {
+
+        message.textContent =
+          data.mensaje ||
+          "No se pudo registrar la visita.";
+
+        message.className =
+          "message error";
+
+        return;
+      }
+
+
+      document.getElementById("memberVisits")
+        .textContent =
+        data.visitas;
+
+
+      message.textContent =
+        data.mensaje ||
+        "Visita registrada correctamente.";
+
+      message.className =
+        "message success";
+
+
+      /*
+       * Después de registrar, bloqueamos temporalmente
+       * el botón para evitar doble registro accidental.
+       */
+      const confirmButton =
+        document.querySelector(".confirm");
+
+      confirmButton.disabled = true;
+      confirmButton.style.opacity = "0.5";
+
+
+      setTimeout(() => {
+
+        clienteActual = null;
+
+        document.getElementById("memberBox")
+          .classList.add("hidden");
+
+        confirmButton.disabled = false;
+        confirmButton.style.opacity = "1";
+
+        reiniciarEscaner();
+
+      }, 2200);
+
+    })
+    .catch(error => {
+
+      console.error(error);
+
+      message.textContent =
+        "No se pudo conectar con el servidor.";
+
+      message.className =
+        "message error";
+
+    });
+
+  }
+
+
+  function reiniciarEscaner() {
+
+    clienteActual = null;
+
+
+    document.getElementById("memberBox")
+      .classList.add("hidden");
+
+
+    document.getElementById("scannerMessage")
+      .textContent =
+      "Apunta la cámara al Member QR.";
+
+    document.getElementById("scannerMessage")
+      .className =
+      "message";
+
+
+    if (!scannerActivo) {
+      iniciarEscaner();
+    }
+
+  }
+
+
+  function cerrarSesion() {
+
+    detenerEscaner();
+
+    staffCode = "";
+    clienteActual = null;
+
+    sessionStorage.removeItem(
+      "tcs_staff_authorized"
+    );
+
+    document.getElementById("staffCard")
+      .classList.add("hidden");
+
+    document.getElementById("loginCard")
+      .classList.remove("hidden");
+
+    document.getElementById("codigo")
+      .value = "";
+
+    document.getElementById("loginMessage")
+      .textContent = "";
+
+  }
+
+
+  /*
+   * Si ya existe una sesión en esta pestaña,
+   * mostramos el panel.
+   *
+   * El código se mantiene únicamente en memoria,
+   * por lo que si se recarga la página deberá
+   * volver a introducirse.
+   */
+  window.addEventListener("load", () => {
+
+    const autorizado =
+      sessionStorage.getItem(
+        "tcs_staff_authorized"
+      );
+
+    if (autorizado === "true") {
+
+      /*
+       * No reutilizamos una contraseña almacenada.
+       * Para mantener la seguridad, pedimos login
+       * nuevamente si se recarga la página.
+       */
       sessionStorage.removeItem(
         "tcs_staff_authorized"
       );
 
-
-      document
-        .getElementById("staffPanel")
-        .classList.add("hidden");
-
-
-      document
-        .getElementById("loginCard")
-        .classList.remove("hidden");
-
-
-      document
-        .getElementById("staffKey")
-        .value = "";
-
-
-      document
-        .getElementById("status")
-        .textContent = "";
     }
 
+  });
 
-    /* =======================================================
-       COMPROBAR SESIÓN AL ABRIR
-       ======================================================= */
-
-    function comprobarSesion() {
-
-      const autorizado =
-        sessionStorage.getItem(
-          "tcs_staff_authorized"
-        );
-
-
-      if (
-        autorizado === "true"
-      ) {
-
-        mostrarPanel();
-      }
-    }
-
-
-    comprobarSesion();
-
-
-    /* =======================================================
-       ENTER PARA INICIAR SESIÓN
-       ======================================================= */
-
-    document
-      .getElementById("staffKey")
-      .addEventListener(
-        "keydown",
-        function(event) {
-
-          if (
-            event.key === "Enter"
-          ) {
-
-            entrar();
-          }
-
-        }
-      );
-
-  </script>
+</script>
 
 </body>
 </html>
