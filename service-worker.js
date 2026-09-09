@@ -1,4 +1,4 @@
-const CACHE_NAME = "tcs-card-v1";
+const CACHE_NAME = "tcs-card-v2";
 
 const APP_SHELL = [
   "./",
@@ -15,6 +15,7 @@ self.addEventListener("install", event => {
     })
   );
 
+  // Activa la nueva versión inmediatamente
   self.skipWaiting();
 });
 
@@ -29,24 +30,28 @@ self.addEventListener("activate", event => {
     })
   );
 
+  // Toma control inmediatamente de las páginas
   self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
   const url = new URL(event.request.url);
 
-  // No interceptar conexiones externas, como Apps Script
+  // MUY IMPORTANTE:
+  // No interceptar Apps Script ni ningún servidor externo.
   if (url.origin !== self.location.origin) {
     return;
   }
 
   event.respondWith(
     caches.match(event.request).then(cached => {
+
       if (cached) {
         return cached;
       }
 
       return fetch(event.request).then(response => {
+
         const copy = response.clone();
 
         caches.open(CACHE_NAME).then(cache => {
@@ -55,6 +60,7 @@ self.addEventListener("fetch", event => {
 
         return response;
       });
+
     })
   );
 });
