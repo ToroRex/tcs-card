@@ -17,11 +17,18 @@
       background:
         radial-gradient(circle at top, #1b1d20 0%, #0b0c0e 45%, #050506 100%);
       color: #f2f2f2;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                   "Helvetica Neue", Arial, sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       padding: 24px;
     }
 
@@ -53,11 +60,16 @@
 
     .card {
       margin-top: 30px;
+
       background: rgba(22, 24, 27, 0.92);
+
       border: 1px solid #303338;
       border-radius: 24px;
+
       padding: 28px 22px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
     }
 
     .lock {
@@ -68,21 +80,32 @@
     .label {
       display: block;
       text-align: left;
+
       font-size: 12px;
       letter-spacing: 1.5px;
+
       color: #92979d;
+
       margin-bottom: 8px;
     }
 
     input {
       width: 100%;
+
       padding: 16px;
+
       border-radius: 14px;
+
       border: 1px solid #383b40;
+
       background: #0e0f11;
+
       color: white;
+
       outline: none;
+
       font-size: 16px;
+
       text-align: center;
     }
 
@@ -92,15 +115,24 @@
 
     button {
       width: 100%;
+
       margin-top: 16px;
+
       padding: 16px;
+
       border: 0;
       border-radius: 14px;
+
       background: #f1f1f1;
+
       color: #0a0a0a;
+
       font-size: 15px;
+
       font-weight: 700;
+
       letter-spacing: 1px;
+
       cursor: pointer;
     }
 
@@ -108,24 +140,97 @@
       transform: scale(.98);
     }
 
+    button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .secondary {
+      background: transparent;
+      color: #f1f1f1;
+      border: 1px solid #383b40;
+    }
+
     .note {
       margin-top: 20px;
+
       font-size: 12px;
+
       line-height: 1.5;
+
       color: #777c82;
     }
 
     #status {
       margin-top: 16px;
+
       min-height: 20px;
+
       font-size: 13px;
-      color: #aeb2b7;
+
+      line-height: 1.5;
+    }
+
+    .success {
+      color: #d7d7d7;
+    }
+
+    .error {
+      color: #d98c8c;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .staff-panel {
+      margin-top: 30px;
+    }
+
+    .staff-welcome {
+      font-family: Georgia, serif;
+
+      font-size: 24px;
+
+      margin-bottom: 8px;
+    }
+
+    .staff-description {
+      color: #858a90;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+      margin-bottom: 24px;
+    }
+
+    .scanner-placeholder {
+      padding: 28px 18px;
+
+      border: 1px dashed #44484d;
+
+      border-radius: 18px;
+
+      color: #777c82;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+    .scanner-icon {
+      font-size: 38px;
+      margin-bottom: 10px;
     }
 
     .footer {
       margin-top: 25px;
+
       font-size: 11px;
+
       color: #55595e;
+
       letter-spacing: 1px;
     }
   </style>
@@ -135,20 +240,37 @@
 
   <main class="container">
 
-    <div class="brand">THE CLUB STUDIO</div>
+    <div class="brand">
+      THE CLUB STUDIO
+    </div>
 
-    <h1>TCS STAFF</h1>
+    <h1>
+      TCS STAFF
+    </h1>
 
     <div class="subtitle">
       Panel privado del equipo
     </div>
 
-    <section class="card">
 
-      <div class="lock">◈</div>
+    <!-- =====================================================
+         LOGIN
+         ===================================================== -->
 
-      <label class="label" for="staffKey">
+    <section
+      id="loginCard"
+      class="card">
+
+      <div class="lock">
+        ◈
+      </div>
+
+      <label
+        class="label"
+        for="staffKey">
+
         ACCESO DEL EQUIPO
+
       </label>
 
       <input
@@ -158,11 +280,17 @@
         autocomplete="off"
       >
 
-      <button onclick="entrar()">
+      <button
+        id="loginButton"
+        onclick="entrar()">
+
         ENTRAR
+
       </button>
 
-      <div id="status"></div>
+      <div
+        id="status">
+      </div>
 
       <div class="note">
         Este acceso es exclusivo para el equipo de
@@ -171,33 +299,281 @@
 
     </section>
 
+
+    <!-- =====================================================
+         PANEL STAFF
+         ===================================================== -->
+
+    <section
+      id="staffPanel"
+      class="card hidden">
+
+      <div class="staff-welcome">
+        Bienvenido, STAFF
+      </div>
+
+      <div class="staff-description">
+        Acceso autorizado al sistema interno
+        de The Club Studio.
+      </div>
+
+
+      <div class="scanner-placeholder">
+
+        <div class="scanner-icon">
+          ▣
+        </div>
+
+        <strong>
+          ESCÁNER QR
+        </strong>
+
+        <br><br>
+
+        El escáner de Member QR se habilitará
+        en el siguiente paso.
+
+      </div>
+
+
+      <button
+        class="secondary"
+        onclick="cerrarSesion()">
+
+        CERRAR SESIÓN
+
+      </button>
+
+    </section>
+
+
     <div class="footer">
       PRIVATE STAFF AREA · TCS
     </div>
 
   </main>
 
-  <script>
-    function entrar() {
-      const key = document.getElementById("staffKey").value.trim();
-      const status = document.getElementById("status");
 
-      if (!key) {
-        status.textContent = "Ingresa el código de acceso.";
+  <script>
+
+    /* =======================================================
+       URL DE GOOGLE APPS SCRIPT
+       ======================================================= */
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbxa4_zlVMntpFaRwpDHqzpeRqVoiAip8tatR30O1HOj1-WcuPR5KoRwJ4wj-XUHDzkH/exec";
+
+
+    /* =======================================================
+       ENTRAR A TCS STAFF
+       ======================================================= */
+
+    async function entrar() {
+
+      const input =
+        document.getElementById("staffKey");
+
+      const button =
+        document.getElementById("loginButton");
+
+      const status =
+        document.getElementById("status");
+
+      const codigo =
+        input.value.trim();
+
+
+      if (!codigo) {
+
+        status.className = "error";
+
+        status.textContent =
+          "Ingresa el código de acceso.";
+
         return;
       }
 
-      /*
-        POR AHORA SOLO ESTAMOS CREANDO LA PANTALLA.
-        La autenticación real se conectará después
-        con Google Apps Script.
 
-        NO pongas aquí una contraseña real todavía.
-      */
+      button.disabled = true;
+
+      button.textContent =
+        "VERIFICANDO...";
+
+      status.className = "";
 
       status.textContent =
-        "Panel preparado. La autenticación segura se conectará en el siguiente paso.";
+        "Comprobando autorización...";
+
+
+      try {
+
+        const respuesta =
+          await fetch(API_URL, {
+
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8"
+            },
+
+            body: JSON.stringify({
+
+              accion: "staff_login",
+
+              codigo: codigo
+
+            })
+
+          });
+
+
+        const datos =
+          await respuesta.json();
+
+
+        if (
+          !datos.ok ||
+          !datos.resultado ||
+          !datos.resultado.autorizado
+        ) {
+
+          throw new Error(
+            "Código de acceso incorrecto."
+          );
+        }
+
+
+        /*
+          Guardamos únicamente la autorización
+          de esta sesión en el navegador.
+        */
+
+        sessionStorage.setItem(
+          "tcs_staff_authorized",
+          "true"
+        );
+
+
+        mostrarPanel();
+
+
+      }
+
+      catch (error) {
+
+        status.className =
+          "error";
+
+        status.textContent =
+          error.message ||
+          "No se pudo verificar el acceso.";
+
+      }
+
+      finally {
+
+        button.disabled = false;
+
+        button.textContent =
+          "ENTRAR";
+      }
     }
+
+
+    /* =======================================================
+       MOSTRAR PANEL
+       ======================================================= */
+
+    function mostrarPanel() {
+
+      document
+        .getElementById("loginCard")
+        .classList.add("hidden");
+
+
+      document
+        .getElementById("staffPanel")
+        .classList.remove("hidden");
+    }
+
+
+    /* =======================================================
+       CERRAR SESIÓN
+       ======================================================= */
+
+    function cerrarSesion() {
+
+      sessionStorage.removeItem(
+        "tcs_staff_authorized"
+      );
+
+
+      document
+        .getElementById("staffPanel")
+        .classList.add("hidden");
+
+
+      document
+        .getElementById("loginCard")
+        .classList.remove("hidden");
+
+
+      document
+        .getElementById("staffKey")
+        .value = "";
+
+
+      document
+        .getElementById("status")
+        .textContent = "";
+    }
+
+
+    /* =======================================================
+       COMPROBAR SESIÓN AL ABRIR
+       ======================================================= */
+
+    function comprobarSesion() {
+
+      const autorizado =
+        sessionStorage.getItem(
+          "tcs_staff_authorized"
+        );
+
+
+      if (
+        autorizado === "true"
+      ) {
+
+        mostrarPanel();
+      }
+    }
+
+
+    comprobarSesion();
+
+
+    /* =======================================================
+       ENTER PARA INICIAR SESIÓN
+       ======================================================= */
+
+    document
+      .getElementById("staffKey")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key === "Enter"
+          ) {
+
+            entrar();
+          }
+
+        }
+      );
+
   </script>
 
 </body>
